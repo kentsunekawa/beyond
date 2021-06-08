@@ -1,7 +1,7 @@
-export type Posts = Post[];
-
 export type Post = {
-    id: number;
-    title: string;
-    content: string;  
-};
+  id: number
+  title: string
+  content: string
+}
+
+export type Posts = Post[]

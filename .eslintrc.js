@@ -1,29 +1,63 @@
+/*eslint-env node*/
 module.exports = {
+  root: true,
   env: {
     browser: true,
-    es2021: true,
+    es2020: true,
   },
   extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "airbnb",
-    "airbnb/hooks",
+    "plugin:jsx-a11y/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
-    project: "./tsconfig.eslint.json",
+    ecmaVersion: 2020,
     sourceType: "module",
-    tsconfigRootDir: __dirname,
   },
-  plugins: ["@typescript-eslint", "import", "jsx-a11y", "react", "react-hooks"],
-  root: true,
-  rules: {},
+  plugins: ["@typescript-eslint", "react", "import"],
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".json"],
+      },
+      typescript: {
+        config: "tsconfig.json",
+        alwaysTryTypes: true,
+      },
+    },
+  },
+  rules: {
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        types: {
+          "{}": false,
+        },
+      },
+    ],
+    "react/prop-types": ["off"],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": ["error", { extensions: [".jsx", ".tsx"] }],
+    "import/order": ["error"],
+    "prettier/prettier": [
+      "error",
+      {
+        trailingComma: "all",
+        endOfLine: "lf",
+        semi: false,
+        singleQuote: true,
+        printWidth: 80,
+        tabWidth: 2,
+      },
+    ],
+  },
 };

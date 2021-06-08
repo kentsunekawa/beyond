@@ -1,14 +1,14 @@
-import { GetStaticProps } from "next";
-import Head from "next/head";
-import Link from "next/link";
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import Link from 'next/link'
 
-import { Posts } from "../types";
+import { Posts } from '../../types'
 
 type Props = {
-  posts: Posts;
-};
+  posts: Posts
+}
 
-const Index = ({ posts }: Props) => {
+const Index = ({ posts }: Props): JSX.Element => {
   return (
     <div>
       <Head>
@@ -22,26 +22,26 @@ const Index = ({ posts }: Props) => {
         </h1>
       </header>
       <main>
-        {posts.map((post) => {
+        {posts.map((post, i) => {
           return (
-            <div>
+            <div key={i}>
               <Link href={`/posts/${post.id}`}>
-                <a>
+                <button>
                   <p>No, {post.id}</p>
                   <h3>{post.title}</h3>
-                </a>
+                </button>
               </Link>
             </div>
-          );
+          )
         })}
       </main>
 
       <footer></footer>
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index
 
 export const getStaticProps: GetStaticProps = async () => {
   return {
@@ -49,20 +49,20 @@ export const getStaticProps: GetStaticProps = async () => {
       posts: [
         {
           id: 1,
-          title: "post1",
-          content: "post1 content",
+          title: 'post1',
+          content: 'post1 content',
         },
         {
           id: 2,
-          title: "post2",
-          content: "post2 content",
+          title: 'post2',
+          content: 'post2 content',
         },
         {
           id: 3,
-          title: "post3",
-          content: "post3 content",
+          title: 'post3',
+          content: 'post3 content',
         },
       ],
     },
-  };
-};
+  }
+}
