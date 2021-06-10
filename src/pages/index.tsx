@@ -27,9 +27,8 @@ const Index = ({ posts }: Props): JSX.Element => {
         {posts.map((post, i) => {
           return (
             <div key={i}>
-              <Link href={`/posts/${post.id}`}>
+              <Link href={`/posts/${post.slug}`}>
                 <button>
-                  <p>No, {post.id}</p>
                   <h3>{post.title}</h3>
                 </button>
               </Link>
