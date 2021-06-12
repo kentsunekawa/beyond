@@ -3,16 +3,17 @@ import Head from 'src/components/templates/Head'
 import Base from 'src/components/templates/Base'
 import PageTitle from 'src/components/atoms/PageTitle'
 
-const About: React.FC = () => {
-  const page = 'about'
+const Daily: React.FC = () => {
+  const page = 'daily'
   return (
     <>
-      <Head title="about" description="about" />
+      <Head title="daily" description="daily" />
       <Base page={page}>
-        <PageTitle title="About" />
+        <PageTitle title="Daily" />
+        <p>coming soon</p>
       </Base>
     </>
   )
 }
 
-export default About
+export default Daily

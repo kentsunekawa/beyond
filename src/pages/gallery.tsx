@@ -3,16 +3,17 @@ import Head from 'src/components/templates/Head'
 import Base from 'src/components/templates/Base'
 import PageTitle from 'src/components/atoms/PageTitle'
 
-const About: React.FC = () => {
-  const page = 'about'
+const Gallery: React.FC = () => {
+  const page = 'gallery'
   return (
     <>
-      <Head title="about" description="about" />
+      <Head title="gallery" description="gallery" />
       <Base page={page}>
-        <PageTitle title="About" />
+        <PageTitle title="Gallery" />
+        <p>coming soon</p>
       </Base>
     </>
   )
 }
 
-export default About
+export default Gallery

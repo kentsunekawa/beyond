@@ -1,20 +1,26 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { POSTS_SLUG_QUERY } from 'queries/posts.query'
-import { POST_QUERY } from 'queries/post.query'
-import { client } from 'utils/apollo-client'
-import { Post as PostType } from 'types'
+import { POSTS_SLUG_QUERY } from 'src/queries/posts.query'
+import { POST_QUERY } from 'src/queries/post.query'
+import { client } from 'src/utils/apollo-client'
+import { Post as PostType } from 'src/types'
+import Head from 'src/components/templates/Head'
+import Base from 'src/components/templates/Base'
+import PostContent from 'src/components/templates/PostContent'
 
 type Props = {
   post: PostType
 }
 
 const Post = ({ post }: Props): JSX.Element => {
+  const page = 'post'
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <div>{post.content.markdown}</div>
-    </div>
+    <>
+      <Head title={post.title} description="説明" />
+      <Base page={page}>
+        <PostContent post={post} />
+      </Base>
+    </>
   )
 }
 
