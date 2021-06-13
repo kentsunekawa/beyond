@@ -1,3 +1,10 @@
+export type Tag = {
+  slug: string
+  label: string
+}
+
+export type TagList = Tag[]
+
 export type PostOverview = {
   slug: string
   title: string
@@ -20,5 +27,7 @@ export type Posts = Post[]
 export type PostSearchQuery = {
   keyword: string
   sort: 'asc' | 'desc'
-  tagList: string[]
+  tagList: TagList
+  offset: number
+  limit: number
 }

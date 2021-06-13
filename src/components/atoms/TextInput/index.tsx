@@ -1,5 +1,5 @@
 export type Props = {
-  value: string
+  text: string
   type: 'text' | 'password'
   name?: string
   placeholder?: string
@@ -7,7 +7,7 @@ export type Props = {
 }
 
 const Container: React.FC<Props> = ({
-  value,
+  text,
   type,
   name,
   placeholder,
@@ -16,7 +16,7 @@ const Container: React.FC<Props> = ({
   return (
     <div>
       <input
-        value={value}
+        value={text}
         type={type}
         name={name}
         onChange={onChange}

@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
-import { client } from 'src/utils/apollo-client'
+import { useQuery } from '@apollo/client'
+import { client, serchPostQueryVar } from 'src/utils/apollo-client'
 
 import { POSTS_QUERY } from 'src/queries/posts.query'
+import { GET_SEARCH_POST_QUERY } from 'src/queries/searchPostQuery.query'
 import {
   PostList as PostListType,
   PostSearchQuery as PostSearchQueryType,
@@ -13,16 +15,17 @@ import PostQueryInput from 'src/components/organisms/PostQueryInput'
 import Loading from 'src/components/atoms/Loading'
 
 const Container = (): JSX.Element => {
+  const page = 'posts'
+
+  const { data, loading, error } = useQuery<{
+    serchPostQuery: PostSearchQueryType
+  }>(GET_SEARCH_POST_QUERY)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [postList, setPostList] = useState<PostListType>([])
-  const [postSearchQuery, setPostSearchQuery] = useState<PostSearchQueryType>({
-    keyword: '',
-    sort: 'desc',
-    tagList: [],
-  })
 
   useEffect(() => {
     const getPost = async () => {
+      setIsLoading(true)
       const { data } = await client.query({
         query: POSTS_QUERY,
       })
@@ -30,23 +33,25 @@ const Container = (): JSX.Element => {
       setPostList(data.posts)
     }
     getPost()
-  }, [postSearchQuery])
+  }, [data])
 
-  const desideQuery = (postSearchQuery: PostSearchQueryType) => {
-    setIsLoading(true)
-    setPostSearchQuery(postSearchQuery)
+  const desideQuery = (query: PostSearchQueryType) => {
+    serchPostQueryVar(query)
   }
 
-  const page = 'posts'
   return (
     <div>
       <Head title="" description="" />
       <Base page={page}>
         <div>
-          <PostQueryInput
-            postSearchQuery={postSearchQuery}
-            desideQuery={desideQuery}
-          />
+          {data ? (
+            <PostQueryInput
+              postSearchQuery={data.serchPostQuery}
+              desideQuery={desideQuery}
+            />
+          ) : (
+            <Loading />
+          )}
         </div>
         <div>
           {isLoading && <Loading />}
