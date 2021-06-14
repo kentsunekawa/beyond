@@ -2,16 +2,16 @@ import { ApolloClient, InMemoryCache, makeVar } from '@apollo/client'
 import { PostSearchQuery as PostSearchQueryType } from 'src/types'
 
 export const serchPostQueryVar = makeVar<PostSearchQueryType>({
-  keyword: 'aaa',
-  sort: 'desc',
+  keyword: '',
+  orderBy: 'createdAt_ASC',
   tagList: [
     {
       slug: 'test',
       label: 'Test',
     },
   ],
-  offset: 1,
-  limit: 10,
+  skip: 0,
+  first: 10,
 })
 
 export const cache = new InMemoryCache({

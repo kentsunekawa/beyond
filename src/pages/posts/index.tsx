@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
 import { client, serchPostQueryVar } from 'src/utils/apollo-client'
 
-import { POSTS_QUERY } from 'src/queries/posts.query'
+import { FILTERD_POSTS_QUERY } from 'src/queries/posts.query'
 import { GET_SEARCH_POST_QUERY } from 'src/queries/searchPostQuery.query'
 import {
   PostList as PostListType,
@@ -26,11 +26,14 @@ const Container = (): JSX.Element => {
   useEffect(() => {
     const getPost = async () => {
       setIsLoading(true)
-      const { data } = await client.query({
-        query: POSTS_QUERY,
+      const result = await client.query({
+        query: FILTERD_POSTS_QUERY,
+        variables: {
+          ...data?.serchPostQuery,
+        },
       })
       setIsLoading(false)
-      setPostList(data.posts)
+      setPostList(result.data.posts)
     }
     getPost()
   }, [data])

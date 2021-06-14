@@ -26,8 +26,8 @@ export type Posts = Post[]
 
 export type PostSearchQuery = {
   keyword: string
-  sort: 'asc' | 'desc'
+  orderBy: 'createdAt_ASC' | 'createdAt_DESC'
   tagList: TagList
-  offset: number
-  limit: number
+  skip: number
+  first: number
 }
