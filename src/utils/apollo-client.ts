@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache, makeVar } from '@apollo/client'
 import { PostSearchQuery as PostSearchQueryType } from 'src/types'
 
 export const serchPostQueryVar = makeVar<PostSearchQueryType>({
-  keyword: '',
+  keyword: 'aaa',
   orderBy: 'createdAt_ASC',
   tagList: [
     {
