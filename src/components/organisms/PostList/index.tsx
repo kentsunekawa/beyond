@@ -1,5 +1,5 @@
-import { PostList } from 'src/types'
-import Post from 'src/components/molecules/Post'
+import { PostList } from 'types'
+import Post from 'components/molecules/Post'
 
 type Props = {
   postList: PostList

@@ -1,7 +1,7 @@
-import { TagList, Tag } from 'src/types'
+import { TagList, Tag } from 'types'
 
-import TextButton from 'src/components/atoms/TextButton'
-import CheckButton from 'src/components/atoms/CheckButton'
+import TextButton from 'components/atoms/TextButton'
+import CheckButton from 'components/atoms/CheckButton'
 
 export type Props = {
   tagList: TagList

@@ -24,9 +24,11 @@ export type Post = {
 export type PostList = PostOverview[]
 export type Posts = Post[]
 
+export type PostOrderByInput = 'createdAt_ASC' | 'createdAt_DESC'
+
 export type PostSearchQuery = {
   keyword: string
-  orderBy: 'createdAt_ASC' | 'createdAt_DESC'
+  orderBy: PostOrderByInput
   tagList: TagList
   skip: number
   first: number

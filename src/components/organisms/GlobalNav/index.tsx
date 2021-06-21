@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import ModeChanger from 'src/components/atoms/ModeChanger'
-import { PATH } from 'src/utils/constants'
+import ModeChanger from 'components/atoms/ModeChanger'
+import { PATH } from 'utils/constants'
 
 const GNav: React.FC = () => {
   return (

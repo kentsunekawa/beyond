@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react'
 import { useQuery } from '@apollo/client'
-import { client, serchPostQueryVar } from 'src/utils/apollo-client'
 
-import { FILTERD_POSTS_QUERY } from 'src/queries/posts.query'
-import { GET_SEARCH_POST_QUERY } from 'src/queries/searchPostQuery.query'
+import { client } from 'client'
+import { serchPostQueryVar } from 'cache'
+import { FILTERD_POSTS_QUERY } from 'operations/queries/posts.query'
+import { GET_SEARCH_POST_QUERY } from 'operations/queries/searchPostQuery.query'
 import {
   PostList as PostListType,
   PostSearchQuery as PostSearchQueryType,
-} from 'src/types'
-import Head from 'src/components/templates/Head'
-import Base from 'src/components/templates/Base'
-import PostList from 'src/components/organisms/PostList'
-import PostQueryInput from 'src/components/organisms/PostQueryInput'
-import Loading from 'src/components/atoms/Loading'
+} from 'types'
+import Head from 'components/templates/Head'
+import Base from 'components/templates/Base'
+import PostList from 'components/organisms/PostList'
+import PostQueryInput from 'components/organisms/PostQueryInput'
+import Loading from 'components/atoms/Loading'
 
 const Container = (): JSX.Element => {
   const page = 'posts'
@@ -20,20 +21,27 @@ const Container = (): JSX.Element => {
   const { data, loading, error } = useQuery<{
     serchPostQuery: PostSearchQueryType
   }>(GET_SEARCH_POST_QUERY)
+
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [postList, setPostList] = useState<PostListType>([])
 
   useEffect(() => {
     const getPost = async () => {
       setIsLoading(true)
-      const result = await client.query({
-        query: FILTERD_POSTS_QUERY,
-        variables: {
-          ...data?.serchPostQuery,
-        },
-      })
-      setIsLoading(false)
-      setPostList(result.data.posts)
+      try {
+        console.log(data)
+
+        const result = await client.query({
+          query: FILTERD_POSTS_QUERY,
+          variables: {
+            ...data?.serchPostQuery,
+          },
+        })
+        setIsLoading(false)
+        setPostList(result.data.posts)
+      } catch (error) {
+        console.log(error)
+      }
     }
     getPost()
   }, [data])

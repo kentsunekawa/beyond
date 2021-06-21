@@ -1,4 +1,4 @@
-import { Post } from 'src/types'
+import { Post } from 'types'
 
 export type Props = {
   post: Post

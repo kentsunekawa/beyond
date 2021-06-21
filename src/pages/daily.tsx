@@ -1,7 +1,7 @@
-import Head from 'src/components/templates/Head'
+import Head from 'components/templates/Head'
 
-import Base from 'src/components/templates/Base'
-import PageTitle from 'src/components/atoms/PageTitle'
+import Base from 'components/templates/Base'
+import PageTitle from 'components/atoms/PageTitle'
 
 const Daily: React.FC = () => {
   const page = 'daily'

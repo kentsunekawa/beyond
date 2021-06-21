@@ -1,4 +1,4 @@
-import { SITEDATA } from 'src/utils/constants'
+import { SITEDATA } from 'utils/constants'
 
 const Container: React.FC = () => {
   return (

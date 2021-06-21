@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { PATH } from 'src/utils/constants'
-import { PostOverview } from 'src/types'
+import { PATH } from 'utils/constants'
+import { PostOverview } from 'types'
 
 export type Props = {
   post: PostOverview

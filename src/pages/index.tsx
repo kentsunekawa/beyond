@@ -1,12 +1,12 @@
 import { GetStaticProps } from 'next'
-import Head from 'src/components/templates/Head'
-import { POSTS_QUERY } from 'src/queries/posts.query'
-import { client } from 'src/utils/apollo-client'
-import { PostList as PostListType } from 'src/types'
+import Head from 'components/templates/Head'
+import { POSTS_QUERY } from 'operations/queries/posts.query'
+import { client } from 'client'
+import { PostList as PostListType } from 'types'
 
-import Base from 'src/components/templates/Base'
-import Fv from 'src/components/organisms/Fv'
-import PostList from 'src/components/organisms/PostList'
+import Base from 'components/templates/Base'
+import Fv from 'components/organisms/Fv'
+import PostList from 'components/organisms/PostList'
 
 type Props = {
   posts: PostListType

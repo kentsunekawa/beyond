@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { PostSearchQuery, Tag, TagList } from 'src/types'
+import { PostSearchQuery, Tag, TagList } from 'types'
 
-import TagSelector from 'src/components/organisms/TagSelector'
-import TextInput from 'src/components/atoms/TextInput'
-import SolidButton from 'src/components/atoms/SolidButton'
+import TagSelector from 'components/organisms/TagSelector'
+import TextInput from 'components/atoms/TextInput'
+import SolidButton from 'components/atoms/SolidButton'
 
 export type Props = {
   postSearchQuery: PostSearchQuery

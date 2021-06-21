@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import GNav from 'src/components/organisms/GlobalNav'
+import GNav from 'components/organisms/GlobalNav'
 
 type Props = {
   logo: boolean

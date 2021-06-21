@@ -25,12 +25,17 @@ export const FILTERD_POSTS_QUERY_NO_TAGS = gql`
 `
 
 export const FILTERD_POSTS_QUERY = gql`
-  query Posts($keyword: String, $first: Int, $skip: Int, $orderBy: String) {
+  query Posts(
+    $keyword: String
+    $first: Int
+    $skip: Int
+    $orderBy: PostOrderByInput
+  ) {
     posts(
       stage: PUBLISHED
       first: $first
       skip: $skip
-      orderBy: createdAt_ASC
+      orderBy: $orderBy
       where: { title_contains: $keyword }
     ) {
       slug

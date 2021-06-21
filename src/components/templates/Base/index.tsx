@@ -1,5 +1,5 @@
-import Header from 'src/components/organisms/Header'
-import Footer from 'src/components/organisms/Footer'
+import Header from 'components/organisms/Header'
+import Footer from 'components/organisms/Footer'
 
 type Props = {
   page: string

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { TagList, Tag } from 'src/types'
-import TagSelectorPanel from 'src/components/organisms/TagSelectorPanel'
+import { TagList, Tag } from 'types'
+import TagSelectorPanel from 'components/organisms/TagSelectorPanel'
 
 export type Props = {
   selectedTags: TagList
