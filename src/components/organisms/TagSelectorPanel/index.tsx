@@ -1,13 +1,13 @@
-import { TagList, Tag } from 'types'
+import { useCallback } from 'react'
 
 import TextButton from 'components/atoms/TextButton'
 import CheckButton from 'components/atoms/CheckButton'
 
 export type Props = {
-  tagList: TagList
-  selectedTags: TagList
+  tagList: string[]
+  selectedTags: string[]
   closePanel: () => void
-  toggleTagSelect: (isSelected: boolean, tag: Tag) => void
+  toggleTagSelect: (isSelected: boolean, tag: string) => void
   clearTagList: () => void
 }
 
@@ -26,12 +26,15 @@ const Container: React.FC<Props> = ({
     closePanel()
   }
 
-  const isSelected = (tag: Tag) => {
-    for (let i = 0; i < selectedTags.length; i++) {
-      if (tag.slug === selectedTags[i].slug) return true
-    }
-    return false
-  }
+  const isSelected = useCallback(
+    (tag: string) => {
+      for (let i = 0; i < selectedTags.length; i++) {
+        if (tag === selectedTags[i]) return true
+      }
+      return false
+    },
+    [selectedTags],
+  )
 
   return (
     <div>
@@ -46,7 +49,7 @@ const Container: React.FC<Props> = ({
                 isSelected={isSelected(tag)}
                 onSelect={(isSelected) => toggleTagSelect(isSelected, tag)}
               >
-                {tag.label}
+                {tag}
               </CheckButton>
             </div>
           )

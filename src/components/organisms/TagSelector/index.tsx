@@ -1,32 +1,14 @@
 import { useState } from 'react'
 
-import { TagList, Tag } from 'types'
 import TagSelectorPanel from 'components/organisms/TagSelectorPanel'
 
 export type Props = {
-  selectedTags: TagList
-  toggleTagSelect: (isSelected: boolean, tag: Tag) => void
+  selectedTags: string[]
+  toggleTagSelect: (isSelected: boolean, tag: string) => void
   clearTagList: () => void
 }
 
-const tagList = [
-  {
-    slug: 'test',
-    label: 'Test',
-  },
-  {
-    slug: 'javascript',
-    label: 'JavaScript',
-  },
-  {
-    slug: 'react',
-    label: 'React',
-  },
-  {
-    slug: 'typescript',
-    label: 'TypeScript',
-  },
-]
+const tagList = ['TypeScript', 'Test', 'JavaScript', 'React', 'SEO']
 
 const TagSelector: React.FC<Props> = ({
   selectedTags,

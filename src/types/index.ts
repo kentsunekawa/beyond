@@ -1,10 +1,3 @@
-export type Tag = {
-  slug: string
-  label: string
-}
-
-export type TagList = Tag[]
-
 export type PostOverview = {
   slug: string
   title: string
@@ -29,7 +22,7 @@ export type PostOrderByInput = 'createdAt_ASC' | 'createdAt_DESC'
 export type PostSearchQuery = {
   keyword: string
   orderBy: PostOrderByInput
-  tagList: TagList
+  tagList: string[]
   skip: number
   first: number
 }

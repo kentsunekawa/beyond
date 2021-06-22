@@ -45,6 +45,30 @@ export const FILTERD_POSTS_QUERY = gql`
   }
 `
 
+export const FILTERD_POSTS_QUERY_WITH_TAGLIST = gql`
+  query Posts(
+    $keyword: String
+    $first: Int
+    $skip: Int
+    $orderBy: PostOrderByInput
+    $tagList: [String!]
+  ) {
+    posts(
+      stage: PUBLISHED
+      first: $first
+      skip: $skip
+      orderBy: $orderBy
+      where: {
+        AND: [{ title_contains: $keyword }, { tags_contains_some: $tagList }]
+      }
+    ) {
+      slug
+      title
+      tags
+    }
+  }
+`
+
 export const POSTS_QUERY = gql`
   query {
     posts(stage: PUBLISHED, first: 10, skip: 0, orderBy: createdAt_ASC) {

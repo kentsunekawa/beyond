@@ -1,15 +1,10 @@
 import { InMemoryCache, makeVar } from '@apollo/client'
 import { PostSearchQuery as PostSearchQueryType } from 'types'
 
-export const serchPostQueryVar = makeVar<PostSearchQueryType>({
+export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   keyword: '',
   orderBy: 'createdAt_ASC',
-  tagList: [
-    {
-      slug: '',
-      label: '',
-    },
-  ],
+  tagList: [],
   skip: 0,
   first: 10,
 })
@@ -18,9 +13,9 @@ export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        serchPostQuery: {
+        searchPostQuery: {
           read() {
-            return serchPostQueryVar()
+            return searchPostQueryVar()
           },
         },
       },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { PostSearchQuery, Tag, TagList } from 'types'
+import { PostSearchQuery } from 'types'
 
 import TagSelector from 'components/organisms/TagSelector'
 import TextInput from 'components/atoms/TextInput'
@@ -20,13 +20,13 @@ const Container: React.FC<Props> = ({ postSearchQuery, desideQuery }) => {
     })
   }
 
-  const toggleTagSelect = (isSelected: boolean, tag: Tag) => {
-    let newTagList: TagList = []
+  const toggleTagSelect = (isSelected: boolean, tag: string) => {
+    let newTagList: string[] = []
     if (isSelected) {
       newTagList = query.tagList.slice()
       newTagList.push(tag)
     } else {
-      newTagList = query.tagList.filter((newTag) => newTag.slug !== tag.slug)
+      newTagList = query.tagList.filter((newTag) => newTag !== tag)
     }
     setQuery({
       ...query,
@@ -41,7 +41,7 @@ const Container: React.FC<Props> = ({ postSearchQuery, desideQuery }) => {
     })
   }
 
-  const search = () => {
+  const search = () => {  
     desideQuery(query)
   }
 
