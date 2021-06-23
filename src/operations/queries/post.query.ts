@@ -4,11 +4,19 @@ export const POST_QUERY = gql`
   query Post($slug: String) {
     post(where: { slug: $slug }) {
       title
-      content {
-        html
-        markdown
-        raw
-        text
+      slug
+      content
+      date
+      coverImage {
+        url
+      }
+      tags
+      seo {
+        description
+        title
+        image {
+          url
+        }
       }
     }
   }

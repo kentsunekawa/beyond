@@ -7,14 +7,11 @@ export type PostOverview = {
 export type Post = {
   slug: string
   title: string
-  content: {
-    html?: string
-    text?: string
-    markdown?: string
-  }
+  content: string
 }
 
 export type PostList = PostOverview[]
+
 export type Posts = Post[]
 
 export type PostOrderByInput = 'createdAt_ASC' | 'createdAt_DESC'

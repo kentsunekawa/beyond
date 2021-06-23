@@ -1,3 +1,6 @@
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
+
 import { Post } from 'types'
 
 export type Props = {
@@ -5,10 +8,16 @@ export type Props = {
 }
 
 const Container: React.FC<Props> = ({ post }) => {
+  console.log(post)
+
   return (
     <article>
       <h1>{post.title}</h1>
-      <div>{post.content.markdown}</div>
+      <div>
+        {post.content && (
+          <ReactMarkdown plugins={[gfm]}>{post.content}</ReactMarkdown>
+        )}
+      </div>
     </article>
   )
 }
