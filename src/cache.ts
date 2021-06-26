@@ -1,12 +1,14 @@
 import { InMemoryCache, makeVar } from '@apollo/client'
 import { PostSearchQuery as PostSearchQueryType } from 'types'
+import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 
 export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   keyword: '',
   orderBy: 'createdAt_ASC',
-  tagList: [],
+  tags: [],
   skip: 0,
-  first: 10,
+  page: 1,
+  first: POSTS_NUM_PER_PAGE,
 })
 
 export const cache = new InMemoryCache({

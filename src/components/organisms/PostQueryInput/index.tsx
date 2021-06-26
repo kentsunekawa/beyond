@@ -23,25 +23,25 @@ const Container: React.FC<Props> = ({ postSearchQuery, desideQuery }) => {
   const toggleTagSelect = (isSelected: boolean, tag: string) => {
     let newTagList: string[] = []
     if (isSelected) {
-      newTagList = query.tagList.slice()
+      newTagList = query.tags.slice()
       newTagList.push(tag)
     } else {
-      newTagList = query.tagList.filter((newTag) => newTag !== tag)
+      newTagList = query.tags.filter((newTag) => newTag !== tag)
     }
     setQuery({
       ...query,
-      tagList: newTagList,
+      tags: newTagList,
     })
   }
 
   const clearTagList = () => {
     setQuery({
       ...query,
-      tagList: [],
+      tags: [],
     })
   }
 
-  const search = () => {  
+  const search = () => {
     desideQuery(query)
   }
 
@@ -58,7 +58,7 @@ const Container: React.FC<Props> = ({ postSearchQuery, desideQuery }) => {
       </div>
       <div>
         <TagSelector
-          selectedTags={query.tagList}
+          selectedTags={query.tags}
           toggleTagSelect={toggleTagSelect}
           clearTagList={clearTagList}
         />

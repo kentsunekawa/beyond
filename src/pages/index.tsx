@@ -1,26 +1,41 @@
+import { useMemo } from 'react'
 import { GetStaticProps } from 'next'
+import Link from 'next/link'
 import Head from 'components/templates/Head'
 import { POSTS_QUERY } from 'operations/queries/posts.query'
 import { client } from 'client'
-import { PostList as PostListType } from 'types'
+import { PostOverview, PageInfo } from 'types'
 
+import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 import Base from 'components/templates/Base'
 import Fv from 'components/organisms/Fv'
 import PostList from 'components/organisms/PostList'
 
 type Props = {
-  posts: PostListType
+  edges: { node: PostOverview }[]
+  pageInfo: PageInfo
+  aggregate: {
+    count: number
+  }
 }
 
-const Index = ({ posts }: Props): JSX.Element => {
+const Index: React.VFC<Props> = ({ edges, aggregate }): JSX.Element => {
   const page = 'index'
+
+  const postList: PostOverview[] = useMemo(() => {
+    return edges.map((edge) => edge.node)
+  }, [edges])
+
   return (
     <>
       <Head title="タイトル" description="説明" />
       <Base page={page}>
         <Fv />
         <div>
-          <PostList postList={posts} />
+          <PostList postList={postList} count={aggregate.count} />
+        </div>
+        <div>
+          <Link href="/posts">{'More >'}</Link>
         </div>
       </Base>
     </>
@@ -32,10 +47,14 @@ export default Index
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({
     query: POSTS_QUERY,
+    variables: {
+      first: POSTS_NUM_PER_PAGE,
+    },
   })
   return {
     props: {
-      posts: data.posts,
+      edges: data.postsConnection.edges,
+      aggregate: data.postsConnection.aggregate,
     },
   }
 }

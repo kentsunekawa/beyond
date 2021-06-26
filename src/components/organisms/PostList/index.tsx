@@ -3,11 +3,13 @@ import Post from 'components/molecules/Post'
 
 type Props = {
   postList: PostList
+  count: number
 }
 
-const Container: React.FC<Props> = ({ postList }) => {
+const Container: React.FC<Props> = ({ postList, count }) => {
   return (
     <div>
+      <p>all {count}</p>
       <ul>
         {postList.length === 0 && <div>No post exists.</div>}
         {postList.length > 0 &&

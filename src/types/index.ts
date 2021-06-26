@@ -1,7 +1,23 @@
+export type PageInfo = {
+  hasNextPage: boolean
+  hasPreviousPage: boolean
+  startCursor: string
+  endCursor: string
+  pageSize: number
+}
+
+export type Seo = {
+  description: string
+  title: string
+}
+
 export type PostOverview = {
+  createdAt: string
+  updatedAt: string
   slug: string
   title: string
-  tagList: string[]
+  tags: string[]
+  seo: null | Seo
 }
 
 export type Post = {
@@ -19,7 +35,8 @@ export type PostOrderByInput = 'createdAt_ASC' | 'createdAt_DESC'
 export type PostSearchQuery = {
   keyword: string
   orderBy: PostOrderByInput
-  tagList: string[]
+  tags: string[]
   skip: number
+  page: number
   first: number
 }

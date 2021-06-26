@@ -4,7 +4,7 @@ import TextButton from 'components/atoms/TextButton'
 import CheckButton from 'components/atoms/CheckButton'
 
 export type Props = {
-  tagList: string[]
+  tags: string[]
   selectedTags: string[]
   closePanel: () => void
   toggleTagSelect: (isSelected: boolean, tag: string) => void
@@ -12,7 +12,7 @@ export type Props = {
 }
 
 const Container: React.FC<Props> = ({
-  tagList,
+  tags,
   selectedTags,
   closePanel,
   toggleTagSelect,
@@ -42,7 +42,7 @@ const Container: React.FC<Props> = ({
         <TextButton onClick={clear}>全てクリア</TextButton>
       </div>
       <div>
-        {tagList.map((tag, i) => {
+        {tags.map((tag, i) => {
           return (
             <div key={i}>
               <CheckButton

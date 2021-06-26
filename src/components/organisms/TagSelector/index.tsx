@@ -8,7 +8,7 @@ export type Props = {
   clearTagList: () => void
 }
 
-const tagList = ['TypeScript', 'Test', 'JavaScript', 'React', 'SEO']
+const tags = ['TypeScript', 'Test', 'JavaScript', 'React', 'SEO']
 
 const TagSelector: React.FC<Props> = ({
   selectedTags,
@@ -42,7 +42,7 @@ const TagSelector: React.FC<Props> = ({
       {isOpen && (
         <div>
           <TagSelectorPanel
-            tagList={tagList}
+            tags={tags}
             selectedTags={selectedTags}
             closePanel={close}
             toggleTagSelect={(isSelected, tag) =>

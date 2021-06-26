@@ -10,7 +10,12 @@ const Container: React.FC<Props> = ({ post }) => {
   return (
     <Link href={`${PATH.post(post.slug)}`}>
       <article>
+        <p>{post.createdAt.split('T')[0]}</p>
         <h3>{post.title}</h3>
+        {post.seo && <p>{post.seo.description}</p>}
+        <ul>
+          {post.tags && post.tags.map((tag, i) => <li key={i}>{tag}</li>)}
+        </ul>
       </article>
     </Link>
   )
