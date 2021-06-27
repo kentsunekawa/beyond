@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { POSTS_SLUG_QUERY } from 'operations/queries/posts.query'
-import { POST_QUERY } from 'operations/queries/post.query'
+import { POSTS_SLUG_QUERY, POST_QUERY } from 'operations/queries'
+
 import { client } from 'client'
 import { Post as PostType } from 'types'
 import Head from 'components/templates/Head'
@@ -12,11 +12,16 @@ type Props = {
   post: PostType
 }
 
-const Post = ({ post }: Props): JSX.Element => {
+const Post: React.VFC<Props> = ({ post }) => {
   const page = 'post'
+
   return (
     <>
-      <Head title={post.title} description="説明" />
+      <Head
+        title={post.seo.title}
+        description={post.seo.description}
+        image={post.seo.image.url}
+      />
       <Base page={page}>
         <PostContent post={post} />
       </Base>

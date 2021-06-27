@@ -7,9 +7,7 @@ export type Props = {
   post: Post
 }
 
-const Container: React.FC<Props> = ({ post }) => {
-  console.log(post)
-
+const Container: React.VFC<Props> = ({ post }) => {
   return (
     <article>
       <h1>{post.title}</h1>

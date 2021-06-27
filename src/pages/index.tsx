@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import Head from 'components/templates/Head'
-import { POSTS_QUERY } from 'operations/queries/posts.query'
+import { POSTS_QUERY } from 'operations/queries'
 import { client } from 'client'
 import { PostOverview, PageInfo } from 'types'
 

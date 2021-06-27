@@ -9,6 +9,9 @@ export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   skip: 0,
   page: 1,
   first: POSTS_NUM_PER_PAGE,
+  last: null,
+  before: null,
+  after: null,
 })
 
 export const cache = new InMemoryCache({

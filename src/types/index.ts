@@ -1,8 +1,8 @@
 export type PageInfo = {
   hasNextPage: boolean
   hasPreviousPage: boolean
-  startCursor: string
-  endCursor: string
+  startCursor: string | null
+  endCursor: string | null
   pageSize: number
 }
 
@@ -24,6 +24,18 @@ export type Post = {
   slug: string
   title: string
   content: string
+  data: string
+  coverImg: {
+    url: string
+  }
+  tags: string[]
+  seo: {
+    description: string
+    title: string
+    image: {
+      url: string
+    }
+  }
 }
 
 export type PostList = PostOverview[]
@@ -36,7 +48,10 @@ export type PostSearchQuery = {
   keyword: string
   orderBy: PostOrderByInput
   tags: string[]
-  skip: number
+  skip: number | null
   page: number
-  first: number
+  first: number | null
+  last: number | null
+  after: string | null
+  before: string | null
 }

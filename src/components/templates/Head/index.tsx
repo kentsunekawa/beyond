@@ -3,10 +3,11 @@ import Head from 'next/head'
 type Props = {
   title: string
   description: string
+  image?: string
   children?: React.ReactNode
 }
 
-const Container: React.FC<Props> = ({ title, description, children }) => {
+const Container: React.VFC<Props> = ({ title, description, children }) => {
   return (
     <>
       <Head>

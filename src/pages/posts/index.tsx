@@ -1,18 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useQuery, useReactiveVar } from '@apollo/client'
-
-import { client } from 'client'
+import { useCallback } from 'react'
+import { useGetPosts } from 'hooks'
 import { searchPostQueryVar } from 'cache'
-import {
-  FILTERD_POSTS_QUERY,
-  FILTERD_POSTS_QUERY_WITH_TAGS,
-} from 'operations/queries/posts.query'
-import {
-  PostList as PostListType,
-  PostSearchQuery as PostSearchQueryType,
-  PostOverview,
-  PageInfo,
-} from 'types'
+import { PostSearchQuery } from 'types'
 import Head from 'components/templates/Head'
 import Base from 'components/templates/Base'
 import PostList from 'components/organisms/PostList'
@@ -24,56 +13,43 @@ import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 const Container = (): JSX.Element => {
   const page = 'posts'
 
-  const searchPostQuery =
-    useReactiveVar<PostSearchQueryType>(searchPostQueryVar)
+  const { searchPostQuery, isLoading, postList, pageInfo, count } =
+    useGetPosts()
 
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [postList, setPostList] = useState<PostListType>([])
-  const [pageInfo, setPageInfo] = useState<PageInfo | null>(null)
-  const [count, setCount] = useState<number>(0)
-
-  useEffect(() => {
-    const getPost = async () => {
-      setIsLoading(true)
-      try {
-        const result = await client.query({
-          query:
-            searchPostQuery.tags.length > 0
-              ? FILTERD_POSTS_QUERY_WITH_TAGS
-              : FILTERD_POSTS_QUERY,
-          variables: {
-            ...searchPostQuery,
-          },
-        })
-        setIsLoading(false)
-        const posts = result.data.postsConnection.edges.map(
-          (edge: { node: PostOverview }) => edge.node,
-        )
-        setPostList(posts)
-        setPageInfo(result.data.postsConnection.pageInfo)
-        setCount(result.data.postsConnection.aggregate.count)
-      } catch (error) {
-        setIsLoading(false)
-        console.log('error')
-        console.log(error)
-      }
-    }
-    getPost()
-  }, [searchPostQuery])
-
-  const desideQuery = useCallback((query: PostSearchQueryType) => {
-    searchPostQueryVar(query)
+  const desideQuery = useCallback((query: PostSearchQuery) => {
+    searchPostQueryVar({
+      ...query,
+      skip: null,
+      page: 1,
+      first: POSTS_NUM_PER_PAGE,
+      last: null,
+      before: null,
+      after: null,
+    })
   }, [])
 
   const goNext = useCallback(() => {
-    console.log(pageInfo?.endCursor)
-
-    console.log('next')
+    searchPostQueryVar({
+      ...searchPostQuery,
+      page: searchPostQuery.page + 1,
+      skip: null,
+      before: null,
+      after: pageInfo.endCursor,
+      first: POSTS_NUM_PER_PAGE,
+      last: null,
+    })
   }, [searchPostQuery, pageInfo])
 
   const goPrev = useCallback(() => {
-    console.log(pageInfo?.startCursor)
-    console.log('prev')
+    searchPostQueryVar({
+      ...searchPostQuery,
+      page: searchPostQuery.page - 1,
+      skip: null,
+      before: pageInfo.startCursor,
+      after: null,
+      first: null,
+      last: POSTS_NUM_PER_PAGE,
+    })
   }, [searchPostQuery, pageInfo])
 
   const goPage = useCallback(
@@ -82,6 +58,10 @@ const Container = (): JSX.Element => {
         ...searchPostQuery,
         page,
         skip: (page - 1) * POSTS_NUM_PER_PAGE,
+        before: null,
+        after: null,
+        first: POSTS_NUM_PER_PAGE,
+        last: null,
       })
     },
     [searchPostQuery],
@@ -101,16 +81,14 @@ const Container = (): JSX.Element => {
           {isLoading && <Loading />}
           {isLoading || <PostList postList={postList} count={count} />}
         </div>
-        {pageInfo && (
-          <Pagination
-            pageInfo={pageInfo}
-            count={count}
-            currentPage={searchPostQuery.page}
-            goNext={goNext}
-            goPrev={goPrev}
-            goPage={goPage}
-          />
-        )}
+        <Pagination
+          pageInfo={pageInfo}
+          count={count}
+          currentPage={searchPostQuery.page}
+          goNext={goNext}
+          goPrev={goPrev}
+          goPage={goPage}
+        />
       </Base>
     </div>
   )

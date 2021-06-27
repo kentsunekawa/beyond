@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import {} from './posts.query'
 
 export const POST_QUERY = gql`
   query Post($slug: String) {

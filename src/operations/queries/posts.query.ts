@@ -71,14 +71,20 @@ export const FILTERD_POSTS_QUERY = gql`
   query Posts(
     $keyword: String
     $first: Int
+    $last: Int
     $skip: Int
     $orderBy: PostOrderByInput
+    $after: String
+    $before: String
   ) {
     postsConnection(
       stage: PUBLISHED
       first: $first
+      last: $last
       skip: $skip
       orderBy: $orderBy
+      after: $after
+      before: $before
       where: { title_contains: $keyword }
     ) {
       ...CommonPostFields
@@ -91,15 +97,21 @@ export const FILTERD_POSTS_QUERY_WITH_TAGS = gql`
   query Posts(
     $keyword: String
     $first: Int
+    $last: Int
     $skip: Int
     $orderBy: PostOrderByInput
     $tags: [String!]
+    $after: String
+    $before: String
   ) {
     postsConnection(
       stage: PUBLISHED
       first: $first
+      last: $last
       skip: $skip
       orderBy: $orderBy
+      after: $after
+      before: $before
       where: {
         AND: [{ title_contains: $keyword }, { tags_contains_some: $tags }]
       }
