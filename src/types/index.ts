@@ -11,6 +11,11 @@ export type Seo = {
   title: string
 }
 
+export type PostMin = {
+  title: string
+  slug: string
+}
+
 export type PostOverview = {
   createdAt: string
   updatedAt: string
@@ -21,10 +26,12 @@ export type PostOverview = {
 }
 
 export type Post = {
+  createdAt: string
+  updatedAt: string
   slug: string
   title: string
   content: string
-  data: string
+  date: string
   coverImg: {
     url: string
   }
@@ -35,7 +42,11 @@ export type Post = {
     image: {
       url: string
     }
-  }
+  } | null
+  relationPosts: {
+    title: string
+    slug: string
+  }[]
 }
 
 export type PostList = PostOverview[]

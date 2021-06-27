@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import GNav from 'components/organisms/GlobalNav'
+import GlobalNav from 'components/organisms/GlobalNav'
 
 type Props = {
   logo: boolean
@@ -15,7 +15,7 @@ const Header: React.VFC<Props> = ({ logo }) => {
         </h1>
       )}
       <div>
-        <GNav />
+        <GlobalNav />
       </div>
     </header>
   )

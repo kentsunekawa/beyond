@@ -4,6 +4,8 @@ import {} from './posts.query'
 export const POST_QUERY = gql`
   query Post($slug: String) {
     post(where: { slug: $slug }) {
+      createdAt
+      updatedAt
       title
       slug
       content
@@ -18,6 +20,10 @@ export const POST_QUERY = gql`
         image {
           url
         }
+      }
+      relationPosts(first: 5) {
+        title
+        slug
       }
     }
   }

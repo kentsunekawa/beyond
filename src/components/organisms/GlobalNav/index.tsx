@@ -2,7 +2,7 @@ import Link from 'next/link'
 import ModeChanger from 'components/atoms/ModeChanger'
 import { PATH } from 'utils/constants'
 
-const GNav: React.FC = () => {
+const GlobalNav: React.FC = () => {
   return (
     <div>
       <div>
@@ -17,26 +17,26 @@ const GNav: React.FC = () => {
               <button>POSTS</button>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href={PATH.daily}>
               <button>DAILY</button>
             </Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link href={PATH.gallery}>
               <button>GALLERY</button>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href={PATH.about}>
               <button>ABOUT</button>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href={PATH.contact}>
               <button>CONTACT</button>
             </Link>
-          </li>
+          </li> */}
         </ul>
       </div>
       <div>
@@ -46,4 +46,4 @@ const GNav: React.FC = () => {
   )
 }
 
-export default GNav
+export default GlobalNav

@@ -10,6 +10,7 @@ const About: React.FC = () => {
       <Head title="about" description="about" />
       <Base page={page}>
         <PageTitle title="About" />
+        <p>coming soon</p>
       </Base>
     </>
   )

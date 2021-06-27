@@ -15,12 +15,14 @@ type Props = {
 const Post: React.VFC<Props> = ({ post }) => {
   const page = 'post'
 
+  console.log(post)
+
   return (
     <>
       <Head
-        title={post.seo.title}
-        description={post.seo.description}
-        image={post.seo.image.url}
+        title={post.seo ? post.seo.title : ''}
+        description={post.seo ? post.seo.description : ''}
+        image={post.seo ? post.seo.image.url : ''}
       />
       <Base page={page}>
         <PostContent post={post} />
