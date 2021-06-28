@@ -1,18 +1,26 @@
+import styled from '@emotion/styled'
 import Header from 'components/organisms/Header'
 import Footer from 'components/organisms/Footer'
 
 type Props = {
   page: string
+  children?: React.ReactNode
+  className?: string
 }
 
-const Base: React.FC<Props> = ({ children, page }) => {
+const Structure: React.VFC<Props> = ({ children, page, className }) => {
   return (
-    <>
+    <div className={className}>
       <Header logo={page !== 'index'} />
       <main>{children}</main>
       <Footer />
-    </>
+    </div>
   )
 }
 
-export default Base
+const Presenter = styled(Structure)`
+  /* background: #000; */
+  background: ${({ theme }) => theme.backgroundColor};
+`
+
+export default Presenter

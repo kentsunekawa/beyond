@@ -9,8 +9,6 @@ export type Props = {
 }
 
 const Container: React.VFC<Props> = ({ post }) => {
-  console.log(post)
-
   return (
     <article>
       <div>

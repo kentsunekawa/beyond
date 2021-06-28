@@ -9,6 +9,7 @@ import {
   FILTERD_POSTS_QUERY,
   FILTERD_POSTS_QUERY_WITH_TAGS,
 } from './posts.query'
+import { GET_PAGE_DATA } from './page.query'
 
 export {
   POST_QUERY,
@@ -20,4 +21,5 @@ export {
   POSTS_QUERY,
   FILTERD_POSTS_QUERY,
   FILTERD_POSTS_QUERY_WITH_TAGS,
+  GET_PAGE_DATA,
 }

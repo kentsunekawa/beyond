@@ -1,5 +1,5 @@
 import { InMemoryCache, makeVar } from '@apollo/client'
-import { PostSearchQuery as PostSearchQueryType } from 'types'
+import { PostSearchQuery as PostSearchQueryType, Mode } from 'types'
 import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 
 export const searchPostQueryVar = makeVar<PostSearchQueryType>({
@@ -14,6 +14,8 @@ export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   after: null,
 })
 
+export const modeVar = makeVar<Mode>('light')
+
 export const cache = new InMemoryCache({
   typePolicies: {
     Query: {
@@ -21,6 +23,11 @@ export const cache = new InMemoryCache({
         searchPostQuery: {
           read() {
             return searchPostQueryVar()
+          },
+        },
+        mode: {
+          read() {
+            return modeVar()
           },
         },
       },

@@ -1,3 +1,5 @@
+export type Mode = 'light' | 'dark'
+
 export type PageInfo = {
   hasNextPage: boolean
   hasPreviousPage: boolean
@@ -65,4 +67,20 @@ export type PostSearchQuery = {
   last: number | null
   after: string | null
   before: string | null
+}
+
+export type Page = {
+  title: string
+  content: {
+    markdown: string
+    html: string
+    text: string
+  }
+  seo: {
+    title: string
+    description: string
+    image: {
+      url: string
+    }
+  }
 }
