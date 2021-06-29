@@ -8,7 +8,6 @@ import { PostOverview, PageInfo } from 'types'
 
 import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 import Base from 'components/templates/Base'
-import Fv from 'components/organisms/Fv'
 import PostList from 'components/organisms/PostList'
 
 type Props = {
@@ -28,14 +27,13 @@ const Index: React.VFC<Props> = ({ edges, aggregate }): JSX.Element => {
 
   return (
     <>
-      <Head title="タイトル" description="説明" />
+      <Head title='タイトル' description='説明' />
       <Base page={page}>
-        <Fv />
         <div>
           <PostList postList={postList} count={aggregate.count} />
         </div>
         <div>
-          <Link href="/posts">{'More >'}</Link>
+          <Link href='/posts'>{'More >'}</Link>
         </div>
       </Base>
     </>

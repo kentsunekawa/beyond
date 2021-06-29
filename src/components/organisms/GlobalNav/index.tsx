@@ -1,49 +1,44 @@
-import Link from 'next/link'
-import ModeChanger from 'components/atoms/ModeChanger'
-import { PATH } from 'utils/constants'
+import React from 'react'
+import styled from '@emotion/styled'
 
-const GlobalNav: React.FC = () => {
-  return (
-    <div>
-      <div>
-        <ul>
-          <li>
-            <Link href={PATH.top}>
-              <button>TOP</button>
-            </Link>
-          </li>
-          <li>
-            <Link href={PATH.posts}>
-              <button>POSTS</button>
-            </Link>
-          </li>
-          {/* <li>
-            <Link href={PATH.daily}>
-              <button>DAILY</button>
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link href={PATH.gallery}>
-              <button>GALLERY</button>
-            </Link>
-          </li> */}
-          <li>
-            <Link href={PATH.about}>
-              <button>ABOUT</button>
-            </Link>
-          </li>
-          {/* <li>
-            <Link href={PATH.contact}>
-              <button>CONTACT</button>
-            </Link>
-          </li> */}
-        </ul>
-      </div>
-      <div>
-        <ModeChanger />
-      </div>
-    </div>
-  )
+import * as styles from './style'
+import { PATH } from 'utils/constants'
+import ModeChanger from 'components/atoms/ModeChanger'
+import TextLink from 'components/atoms/TextLink'
+
+interface ComponentProps {
+  className?: string
 }
 
-export default GlobalNav
+type Props = ComponentProps
+
+const Structure: React.VFC<Props> = ({ className }) => (
+  <div className={className}>
+    <nav className='nav'>
+      <ul>
+        <li>
+          <TextLink href={PATH.top}>TOP</TextLink>
+        </li>
+        <li>
+          <TextLink href={PATH.posts}>POSTS</TextLink>
+        </li>
+        <li>
+          <TextLink href={PATH.about}>ABOUT</TextLink>
+        </li>
+      </ul>
+    </nav>
+    <div className='modeChanger'>
+      <ModeChanger />
+    </div>
+  </div>
+)
+
+const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+const Container: React.VFC<ComponentProps> = () => {
+  return <Presenter></Presenter>
+}
+
+export default React.memo(Container)

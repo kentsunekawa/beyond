@@ -59,5 +59,6 @@ module.exports = {
         tabWidth: 2,
       },
     ],
+    'jsx-quotes': ['error', 'prefer-single'],
   },
 };

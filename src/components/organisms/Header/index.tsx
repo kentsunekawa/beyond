@@ -1,24 +1,38 @@
 import React from 'react'
 import Link from 'next/link'
+import styled from '@emotion/styled'
+
+import * as styles from './style'
 import GlobalNav from 'components/organisms/GlobalNav'
 
-type Props = {
+interface ContainerProps {
   logo: boolean
+  className?: string
 }
 
-const Header: React.VFC<Props> = ({ logo }) => {
+type Props = ContainerProps
+
+const Structure: React.VFC<Props> = ({ logo, className }) => {
   return (
-    <header>
-      {logo && (
-        <h1>
-          <Link href="/">BEYOND</Link>
-        </h1>
-      )}
-      <div>
+    <header className={className}>
+      <div className='inner'>
+        {logo && (
+          <h1 className='logo'>
+            <Link href='/'>BEYOND</Link>
+          </h1>
+        )}
         <GlobalNav />
       </div>
     </header>
   )
 }
 
-export default React.memo(Header)
+const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+const Container: React.VFC<ContainerProps> = ({ logo }) => {
+  return <Presenter logo={logo}></Presenter>
+}
+
+export default React.memo(Container)
