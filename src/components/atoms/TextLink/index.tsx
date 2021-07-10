@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import * as styles from './style'
 
 interface ComponentProps {
@@ -12,11 +12,9 @@ interface ComponentProps {
 type Props = ComponentProps
 
 const Structure: React.VFC<Props> = ({ href, className, children }) => (
-  <div className={className}>
-    <Link href={href}>
-      <button>{children}</button>
-    </Link>
-  </div>
+  <Link href={href}>
+    <button className={className}>{children}</button>
+  </Link>
 )
 
 const Presenter = styled(Structure)`

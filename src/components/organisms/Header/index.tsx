@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 import * as styles from './style'
 import GlobalNav from 'components/organisms/GlobalNav'

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 
 import * as styles from './style'
 import { PATH } from 'utils/constants'
@@ -15,21 +15,25 @@ type Props = ComponentProps
 const Structure: React.VFC<Props> = ({ className }) => (
   <div className={className}>
     <nav className='nav'>
-      <ul>
-        <li>
-          <TextLink href={PATH.top}>TOP</TextLink>
+      <ul className='navLint'>
+        <li className='navItem'>
+          <TextLink className='navBtn' href={PATH.top}>
+            TOP
+          </TextLink>
         </li>
         <li>
-          <TextLink href={PATH.posts}>POSTS</TextLink>
+          <TextLink className='navBtn' href={PATH.posts}>
+            POSTS
+          </TextLink>
         </li>
         <li>
-          <TextLink href={PATH.about}>ABOUT</TextLink>
+          <TextLink className='navBtn' href={PATH.about}>
+            ABOUT
+          </TextLink>
         </li>
       </ul>
     </nav>
-    <div className='modeChanger'>
-      <ModeChanger />
-    </div>
+    <ModeChanger />
   </div>
 )
 

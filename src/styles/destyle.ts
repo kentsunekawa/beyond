@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css } from 'styled-components'
 
 export const destyle = css`
   /*! destyle.css v2.0.2 | MIT License | https://github.com/nicolas-cusan/destyle.css */

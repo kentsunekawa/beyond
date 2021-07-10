@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import * as styles from './style'
 import { SITEDATA } from 'utils/constants'
 

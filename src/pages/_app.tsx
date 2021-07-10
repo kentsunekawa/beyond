@@ -1,11 +1,11 @@
 import type { AppProps } from 'next/app'
 import { ApolloProvider, useReactiveVar } from '@apollo/client'
-import { ThemeProvider, Global } from '@emotion/react'
+import { ThemeProvider } from 'styled-components'
 import { Mode } from 'types'
-import { globalStyle } from 'styles'
 import { client } from 'client'
 import { theme } from 'styles/theme'
 import { modeVar } from 'cache'
+import GlobalStyle from 'components/GlobalStyle'
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const mode = useReactiveVar<Mode>(modeVar)
@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme[mode]}>
-        <Global styles={globalStyle} />
+        <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>
     </ApolloProvider>

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from 'styled-components'
 import * as styles from './style'
 import Header from 'components/organisms/Header'
 import Footer from 'components/organisms/Footer'

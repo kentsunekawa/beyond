@@ -1,16 +1,26 @@
-const common = { black: '#333' }
+const base = {
+  font: {
+    eng: "'Open Sans', sans-serif",
+  },
+}
 
 const light = {
-  ...common,
   backgroundColor: '#fff',
 }
 
 const dark = {
-  ...common,
   backgroundColor: '#333',
 }
 
 export const theme = {
-  light,
-  dark,
+  light: {
+    ...base,
+    ...light,
+  },
+  dark: {
+    ...base,
+    ...dark,
+  },
 }
+
+export type AppTheme = typeof theme.light | typeof theme.dark

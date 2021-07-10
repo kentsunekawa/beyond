@@ -1,4 +1,5 @@
-import { css } from '@emotion/react'
+import { css } from 'styled-components'
+import { eng } from 'styles/mixins'
 
 export const base = css`
   position: fixed;
@@ -23,6 +24,10 @@ export const base = css`
       left: 20px;
       top: 50%;
       transform: translateY(-50%);
+      a {
+        font-size: 30px;
+        font-weight: 700;
+      }
     }
   }
 `

@@ -1,7 +1,9 @@
-import { css } from '@emotion/react'
+import { css } from 'styled-components'
 
 export const base = css`
-  & > button {
-    padding: 0.5em;
-  }
+  padding: 0.5em;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #707070;
 `
