@@ -13,5 +13,6 @@ export const baseStyle = css`
 
   * {
     box-sizing: border-box;
+    color: #333;
   }
 `

@@ -2,11 +2,15 @@ import { css } from 'styled-components'
 
 export const base = css`
   display: flex;
-  font-size: 20px;
   justify-content: center;
   align-items: center;
   align-content: center;
-  input {
-    display: none;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+  height: 40px;
+  width: 100%;
+  &.-disabled {
+    opacity: 0.3;
   }
 `

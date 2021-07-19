@@ -1,5 +1,4 @@
 import { css } from 'styled-components'
-import { eng } from 'styles/mixins'
 
 export const base = css`
   position: fixed;
@@ -21,11 +20,11 @@ export const base = css`
     padding-right: 20px;
     & > .logo {
       position: absolute;
-      left: 20px;
+      left: 16px;
       top: 50%;
       transform: translateY(-50%);
       a {
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 700;
       }
     }

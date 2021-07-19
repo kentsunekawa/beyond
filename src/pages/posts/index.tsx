@@ -69,26 +69,27 @@ const Container = (): JSX.Element => {
 
   return (
     <div>
-      <Head title="" description="" />
+      <Head title='' description='' />
       <Base page={page}>
-        <div>
-          <PostQueryInput
-            postSearchQuery={searchPostQuery}
-            desideQuery={desideQuery}
-          />
-        </div>
-        <div>
+        <PostQueryInput
+          className='queryInputArea'
+          postSearchQuery={searchPostQuery}
+          desideQuery={desideQuery}
+        />
+        <div className='main'>
           {isLoading && <Loading />}
           {isLoading || <PostList postList={postList} count={count} />}
         </div>
-        <Pagination
-          pageInfo={pageInfo}
-          count={count}
-          currentPage={searchPostQuery.page}
-          goNext={goNext}
-          goPrev={goPrev}
-          goPage={goPage}
-        />
+        <div className='pagination'>
+          <Pagination
+            pageInfo={pageInfo}
+            count={count}
+            currentPage={searchPostQuery.page}
+            goNext={goNext}
+            goPrev={goPrev}
+            goPage={goPage}
+          />
+        </div>
       </Base>
     </div>
   )

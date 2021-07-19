@@ -15,7 +15,7 @@ const Container: React.VFC<Props> = ({ title, description, children }) => {
         <meta name='description' content={description} />
         <link rel='icon' href='/favicon.ico' />
         <link
-          href='https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Round'
+          href='https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Sharp'
           rel='stylesheet'
         />
         {children}

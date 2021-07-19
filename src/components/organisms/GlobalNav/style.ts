@@ -5,11 +5,10 @@ export const base = css`
   justify-content: flex-end;
   align-items: center;
   align-content: center;
+
   & > nav {
     & > ul {
       display: flex;
     }
-  }
-  & > .modeChanger {
   }
 `

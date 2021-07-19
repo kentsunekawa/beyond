@@ -7,9 +7,9 @@ const Daily: React.FC = () => {
   const page = 'daily'
   return (
     <>
-      <Head title="daily" description="daily" />
+      <Head title='daily' description='daily' />
       <Base page={page}>
-        <PageTitle title="Daily" />
+        <PageTitle title='Daily' />
         <p>coming soon</p>
       </Base>
     </>

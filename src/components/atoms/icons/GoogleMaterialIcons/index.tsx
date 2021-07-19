@@ -1,11 +1,15 @@
 import styled from 'styled-components'
+import classNames from 'classnames'
 
 export type Props = {
   iconName: string
+  className?: string
 }
 
-const Structure: React.VFC<Props> = ({ iconName }) => (
-  <span className='material-icons'>{iconName}</span>
+const Structure: React.VFC<Props> = ({ className, iconName }) => (
+  <span className={classNames(className, 'material-icons-sharp')}>
+    {iconName}
+  </span>
 )
 
 const Presenter = styled(Structure)`

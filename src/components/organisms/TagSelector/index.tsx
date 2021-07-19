@@ -1,20 +1,69 @@
 import { useState } from 'react'
+import styled from 'styled-components'
 
+import * as styles from './style'
 import TagSelectorPanel from 'components/organisms/TagSelectorPanel'
+import SolidButton from 'components/atoms/SolidButton'
 
-export type Props = {
+export type ComponentProps = {
+  tags: string[]
   selectedTags: string[]
   toggleTagSelect: (isSelected: boolean, tag: string) => void
   clearTagList: () => void
+  className?: string
 }
 
-const tags = ['TypeScript', 'Test', 'JavaScript', 'React', 'SEO']
+export type Props = ComponentProps & {
+  isOpen: boolean
+  click: () => void
+  close: () => void
+  mouseEneter: () => void
+  mouseLeave: () => void
+}
 
-const TagSelector: React.FC<Props> = ({
+const Structure: React.VFC<Props> = ({
+  tags,
+  isOpen,
   selectedTags,
   toggleTagSelect,
   clearTagList,
-}) => {
+  click,
+  close,
+  mouseEneter,
+  mouseLeave,
+  className,
+}) => (
+  <div
+    onMouseEnter={mouseEneter}
+    onMouseLeave={mouseLeave}
+    className={className}
+  >
+    <SolidButton onClick={click} className='openButton'>
+      <>
+        {selectedTags.length > 0 && (
+          <span className='num'>{selectedTags.length}</span>
+        )}
+        Tags
+      </>
+    </SolidButton>
+    {isOpen && (
+      <TagSelectorPanel
+        className='panel'
+        tags={tags}
+        selectedTags={selectedTags}
+        closePanel={close}
+        toggleTagSelect={(isSelected, tag) => toggleTagSelect(isSelected, tag)}
+        clearTagList={clearTagList}
+      />
+    )}
+  </div>
+)
+
+const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+const Container: React.FC<ComponentProps> = (componentProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const click = () => {
@@ -33,27 +82,9 @@ const TagSelector: React.FC<Props> = ({
     setIsOpen(false)
   }
 
-  return (
-    <div onMouseEnter={mouseEneter} onMouseLeave={mouseLeave}>
-      <button onClick={click}>
-        {selectedTags.length > 0 && <span>{selectedTags.length}</span>}
-        タグ
-      </button>
-      {isOpen && (
-        <div>
-          <TagSelectorPanel
-            tags={tags}
-            selectedTags={selectedTags}
-            closePanel={close}
-            toggleTagSelect={(isSelected, tag) =>
-              toggleTagSelect(isSelected, tag)
-            }
-            clearTagList={clearTagList}
-          />
-        </div>
-      )}
-    </div>
-  )
+  const props = { isOpen, click, close, mouseEneter, mouseLeave }
+
+  return <Presenter {...componentProps} {...props} />
 }
 
-export default TagSelector
+export default Container

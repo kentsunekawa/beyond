@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { GetStaticProps } from 'next'
-import Link from 'next/link'
+import styled from 'styled-components'
+import * as styles from './style'
 import Head from 'components/templates/Head'
 import { POSTS_QUERY } from 'operations/queries'
 import { client } from 'client'
@@ -9,6 +10,7 @@ import { PostOverview, PageInfo } from 'types'
 import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 import Base from 'components/templates/Base'
 import PostList from 'components/organisms/PostList'
+import TextLink from 'components/atoms/TextLink'
 
 type Props = {
   edges: { node: PostOverview }[]
@@ -16,9 +18,14 @@ type Props = {
   aggregate: {
     count: number
   }
+  className?: string
 }
 
-const Index: React.VFC<Props> = ({ edges, aggregate }): JSX.Element => {
+const Page: React.VFC<Props> = ({
+  edges,
+  aggregate,
+  className,
+}): JSX.Element => {
   const page = 'index'
 
   const postList: PostOverview[] = useMemo(() => {
@@ -29,16 +36,25 @@ const Index: React.VFC<Props> = ({ edges, aggregate }): JSX.Element => {
     <>
       <Head title='タイトル' description='説明' />
       <Base page={page}>
-        <div>
-          <PostList postList={postList} count={aggregate.count} />
-        </div>
-        <div>
-          <Link href='/posts'>{'More >'}</Link>
+        <div className={className}>
+          <div className='listHeader'>
+            <TextLink href='/posts'>{'More >'}</TextLink>
+          </div>
+          <div className='listArea'>
+            <PostList postList={postList} count={aggregate.count} />
+          </div>
+          <div className='listFooter'>
+            <TextLink href='/posts'>{'More >'}</TextLink>
+          </div>
         </div>
       </Base>
     </>
   )
 }
+
+const Index = styled(Page)`
+  ${styles.base}
+`
 
 export default Index
 

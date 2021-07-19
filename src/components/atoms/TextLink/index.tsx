@@ -6,7 +6,7 @@ import * as styles from './style'
 interface ComponentProps {
   href: string
   className?: string
-  children: React.ReactNode
+  children?: React.ReactNode
 }
 
 type Props = ComponentProps

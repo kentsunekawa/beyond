@@ -1,10 +1,32 @@
+import styled from 'styled-components'
+import classNames from 'classnames'
+import * as styles from './style'
+
 export type Props = {
-  children: React.ReactChild
   onClick: () => void
+  className?: string
+  disabled?: boolean
+  children?: React.ReactChild
 }
 
-const Container: React.FC<Props> = ({ children, onClick }) => {
-  return <button onClick={onClick}>{children}</button>
+const Structure: React.VFC<Props> = ({
+  children,
+  className,
+  disabled,
+  onClick,
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={classNames(className, disabled ? '-disabled' : '')}
+    >
+      {children}
+    </button>
+  )
 }
 
-export default Container
+const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+export default Presenter
