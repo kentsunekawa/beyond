@@ -19,20 +19,22 @@ export const base = css`
   & > .tagList {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    max-height: 300px;
+    overflow-x: scroll;
     & > .tagItem {
       margin-right: 4px;
       margin-bottom: 4px;
     }
   }
-  &.-selected {
-    padding-bottom: 72px;
-  }
   .clearButton {
-    width: calc(100% - 16px);
-    position: absolute;
-    left: 50%;
-    bottom: 8px;
-    transform: translateX(-50%);
+    padding-top: 8px;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+  .okButton {
+    margin-top: 16px;
+    width: 100%;
   }
   .closeButton {
     position: absolute;

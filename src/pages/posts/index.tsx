@@ -5,6 +5,7 @@ import { PostSearchQuery } from 'types'
 import Head from 'components/templates/Head'
 import Base from 'components/templates/Base'
 import PostList from 'components/organisms/PostList'
+import QueryDisplay from 'components/organisms/QueryDisplay'
 import PostQueryInput from 'components/organisms/PostQueryInput'
 import Pagination from 'components/organisms/Pagination'
 import Loading from 'components/atoms/Loading'
@@ -76,6 +77,9 @@ const Container = (): JSX.Element => {
           postSearchQuery={searchPostQuery}
           desideQuery={desideQuery}
         />
+        <div>
+          <QueryDisplay />
+        </div>
         <div className='main'>
           {isLoading && <Loading />}
           {isLoading || <PostList postList={postList} count={count} />}

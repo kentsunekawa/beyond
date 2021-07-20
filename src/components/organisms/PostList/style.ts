@@ -10,6 +10,13 @@ export const base = css`
     }
   }
   & > .list {
+    & > .message {
+      display: block;
+      text-align: center;
+      padding: 16px 24px;
+      color: #aaa;
+      font-size: 24px;
+    }
     & > .item {
       border-bottom: 1px solid #ddd;
     }

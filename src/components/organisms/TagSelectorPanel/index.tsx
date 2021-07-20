@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import * as styles from './style'
 import SolidButton from 'components/atoms/SolidButton'
+import TextButton from 'components/atoms/TextButton'
 import IconButton from 'components/atoms/IconButton'
 import CheckButton from 'components/atoms/CheckButton'
 
@@ -37,15 +38,7 @@ export const Structure: React.VFC<Props> = ({
       selectedTags.length > 0 ? '-selected' : '',
     )}
   >
-    {selectedTags.length > 0 && (
-      <SolidButton
-        onClick={clear}
-        className={classNames('clearButton')}
-        disabled={selectedTags.length < 1}
-      >
-        All clear
-      </SolidButton>
-    )}
+    <IconButton onClick={close} iconName='close' className='closeButton' />
     <p className='title'>Tags</p>
     <div className='tagList'>
       {tags.map((tag, i) => {
@@ -61,7 +54,14 @@ export const Structure: React.VFC<Props> = ({
         )
       })}
     </div>
-    <IconButton onClick={close} iconName='close' className='closeButton' />
+    {selectedTags.length > 0 && (
+      <div className='clearButton'>
+        <TextButton onClick={clear}>All clear</TextButton>
+      </div>
+    )}
+    <SolidButton onClick={close} className={classNames('okButton')}>
+      OK
+    </SolidButton>
   </div>
 )
 

@@ -16,7 +16,9 @@ const Structure: React.FC<Props> = ({ postList, count, className }) => {
         <p className='postNum'>all {count}</p>
       </div>
       <ul className='list'>
-        {postList.length === 0 && <div>No post exists.</div>}
+        {postList.length === 0 && (
+          <div className='message'>No post exists.</div>
+        )}
         {postList.length > 0 &&
           postList.map((post, i) => (
             <li key={i} className='item'>

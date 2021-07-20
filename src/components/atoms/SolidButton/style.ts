@@ -14,3 +14,8 @@ export const base = css`
     opacity: 0.3;
   }
 `
+
+export const gray = css`
+  background: #efefed;
+  color: #333;
+`
