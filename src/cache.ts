@@ -14,15 +14,6 @@ export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   after: null,
 })
 
-export const tagListVar = makeVar<string[]>([
-  'TypeScript',
-  'Test',
-  'JavaScript',
-  'React',
-  'SEO',
-  'Node.js',
-])
-
 export const modeVar = makeVar<Mode>('light')
 
 export const cache = new InMemoryCache({
@@ -37,11 +28,6 @@ export const cache = new InMemoryCache({
         mode: {
           read() {
             return modeVar()
-          },
-        },
-        tagList: {
-          read() {
-            return tagListVar()
           },
         },
       },

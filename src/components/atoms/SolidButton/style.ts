@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { linkHover } from 'styles/mixins'
 
 export const base = css`
   display: flex;
@@ -13,6 +14,7 @@ export const base = css`
   &.-disabled {
     opacity: 0.3;
   }
+  ${linkHover()}
 `
 
 export const gray = css`

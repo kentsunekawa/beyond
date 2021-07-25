@@ -1,23 +1,34 @@
 import Link from 'next/link'
-
+import styled from 'styled-components'
+import classNames from 'classnames'
+import * as styles from './styles'
 import { PostMin } from 'types'
+
+import SectionTitle from 'components/atoms/SectionTitle'
 
 export interface Props {
   posts: PostMin[]
+  listTitle?: string
+  className?: string
 }
 
-const Container: React.VFC<Props> = ({ posts }) => {
+const Structure: React.VFC<Props> = ({ posts, listTitle, className }) => {
   return (
-    <div>
-      <ul>
+    <div className={classNames(className)}>
+      <SectionTitle className='title'>{listTitle}</SectionTitle>
+      <div className='links'>
         {posts.map((post, i) => (
-          <li key={i}>
-            <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-          </li>
+          <Link key={i} href={`/posts/${post.slug}`}>
+            {post.title}
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
 
-export default Container
+export const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+export default Presenter

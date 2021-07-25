@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { linkHover } from 'styles/mixins'
 
 export const base = css`
   padding: 0.5em;
@@ -6,4 +7,5 @@ export const base = css`
   font-weight: 500;
   letter-spacing: 0.05em;
   color: #707070;
+  ${linkHover()}
 `

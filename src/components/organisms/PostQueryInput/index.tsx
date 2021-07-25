@@ -1,21 +1,20 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useReactiveVar } from '@apollo/client'
 import * as styles from './style'
 import { PostSearchQuery } from 'types'
-import { tagListVar } from 'cache'
 import TagSelector from 'components/organisms/TagSelector'
 import TextInput from 'components/atoms/TextInput'
 import SolidButton from 'components/atoms/SolidButton'
+import GoogleMaterialIcons from 'components/atoms/icons/GoogleMaterialIcons'
 
 export type ComponentProps = {
+  tags: string[]
   postSearchQuery: PostSearchQuery
   desideQuery: (query: PostSearchQuery) => void
   className?: string
 }
 
 export type Props = ComponentProps & {
-  tags: string[]
   query: PostSearchQuery
   keywordChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   toggleTagSelect: (isSelected: boolean, tag: string) => void
@@ -49,7 +48,7 @@ export const Structure: React.VFC<Props> = ({
       clearTagList={clearTagList}
     />
     <SolidButton className='SearchButton' onClick={search}>
-      Search
+      <GoogleMaterialIcons iconName='search' />
     </SolidButton>
   </div>
 )
@@ -59,7 +58,6 @@ export const Presenter = styled(Structure)`
 `
 
 const Container: React.FC<ComponentProps> = (componentProps) => {
-  const tags = useReactiveVar(tagListVar)
   const { postSearchQuery, desideQuery } = componentProps
 
   const [query, setQuery] = useState<PostSearchQuery>(postSearchQuery)
@@ -97,7 +95,6 @@ const Container: React.FC<ComponentProps> = (componentProps) => {
   }
 
   const props = {
-    tags,
     query,
     keywordChange,
     toggleTagSelect,

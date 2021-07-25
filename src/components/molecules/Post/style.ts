@@ -1,9 +1,12 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
+import { linkHover } from 'styles/mixins'
 
 export const base = css`
   display: flex;
   flex-wrap: wrap;
   padding: 24px;
+  cursor: pointer;
   & > .date {
     display: block;
     width: 100%;
@@ -38,5 +41,10 @@ export const base = css`
         content: '/';
       }
     }
+  }
+
+  ${linkHover()}
+  @media ${mq.tbMin_gt} {
+    padding: 40px 0;
   }
 `

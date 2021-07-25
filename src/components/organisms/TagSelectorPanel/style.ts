@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 
 export const base = css`
   position: relative;
@@ -40,5 +41,11 @@ export const base = css`
     position: absolute;
     top: 0;
     right: 0;
+  }
+  @media ${mq.tbMin_gt} {
+    .okButton {
+      width: 300px;
+      margin: 16px auto 0;
+    }
   }
 `

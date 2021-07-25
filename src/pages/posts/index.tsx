@@ -1,7 +1,11 @@
 import { useCallback } from 'react'
+import { GetStaticProps } from 'next'
+import styled from 'styled-components'
 import { useGetPosts } from 'hooks'
 import { searchPostQueryVar } from 'cache'
 import { PostSearchQuery } from 'types'
+import { POSTS_QUERY } from 'operations/queries'
+import { client } from 'client'
 import Head from 'components/templates/Head'
 import Base from 'components/templates/Base'
 import PostList from 'components/organisms/PostList'
@@ -11,7 +15,11 @@ import Pagination from 'components/organisms/Pagination'
 import Loading from 'components/atoms/Loading'
 import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 
-const Container = (): JSX.Element => {
+export type Props = {
+  tags: string[]
+}
+
+const Page: React.VFC<Props> = ({ tags }) => {
   const page = 'posts'
 
   const { searchPostQuery, isLoading, postList, pageInfo, count } =
@@ -73,6 +81,7 @@ const Container = (): JSX.Element => {
       <Head title='' description='' />
       <Base page={page}>
         <PostQueryInput
+          tags={tags}
           className='queryInputArea'
           postSearchQuery={searchPostQuery}
           desideQuery={desideQuery}
@@ -81,22 +90,45 @@ const Container = (): JSX.Element => {
           <QueryDisplay />
         </div>
         <div className='main'>
-          {isLoading && <Loading />}
+          {isLoading && <Loading className='loading' />}
           {isLoading || <PostList postList={postList} count={count} />}
         </div>
-        <div className='pagination'>
-          <Pagination
-            pageInfo={pageInfo}
-            count={count}
-            currentPage={searchPostQuery.page}
-            goNext={goNext}
-            goPrev={goPrev}
-            goPage={goPage}
-          />
-        </div>
+        <Pagination
+          className='pagination'
+          pageInfo={pageInfo}
+          count={count}
+          currentPage={searchPostQuery.page}
+          goNext={goNext}
+          goPrev={goPrev}
+          goPage={goPage}
+        />
       </Base>
     </div>
   )
 }
 
-export default Container
+const Posts = styled(Page)``
+
+export default Posts
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { data } = await client.query({
+    query: POSTS_QUERY,
+  })
+
+  let tags: string[] = []
+  data.postsConnection.edges.forEach((edge: any) => {
+    tags = [...tags, ...edge.node.tags]
+  })
+
+  const uniqTags: string[] = []
+  new Set(tags).forEach((tag) => {
+    uniqTags.push(tag)
+  })
+
+  return {
+    props: {
+      tags: uniqTags,
+    },
+  }
+}

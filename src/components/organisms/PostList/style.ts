@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 
 export const base = css`
   & > .infoArea {
@@ -15,10 +16,16 @@ export const base = css`
       text-align: center;
       padding: 16px 24px;
       color: #aaa;
-      font-size: 24px;
+      font-size: 18px;
     }
     & > .item {
       border-bottom: 1px solid #ddd;
+    }
+  }
+
+  @media ${mq.tbMin_gt} {
+    & > .infoArea {
+      padding: 0;
     }
   }
 `

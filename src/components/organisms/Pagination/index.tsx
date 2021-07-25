@@ -1,9 +1,11 @@
 import { useMemo, useCallback } from 'react'
-import Link from 'next/link'
-
+import styled from 'styled-components'
+import classNames from 'classnames'
+import * as styles from './styles'
 import { PageInfo } from 'types'
 import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 
+// type definitions
 export type Props = {
   pageInfo: PageInfo
   count: number
@@ -11,15 +13,17 @@ export type Props = {
   goNext: () => void
   goPrev: () => void
   goPage: (page: number) => void
+  className?: string
 }
 
-const Container: React.VFC<Props> = ({
+const Structure: React.VFC<Props> = ({
   pageInfo,
   count,
   currentPage,
   goNext,
   goPrev,
   goPage,
+  className,
 }) => {
   const calcPages = useMemo(() => {
     return [...Array(Math.ceil(count / POSTS_NUM_PER_PAGE))].map(
@@ -35,21 +39,36 @@ const Container: React.VFC<Props> = ({
   )
 
   return (
-    <div>
-      {pageInfo.hasPreviousPage && <button onClick={goPrev}>Prev</button>}
+    <div className={className}>
+      {pageInfo.hasPreviousPage && (
+        <button className='button -prev' onClick={goPrev}>
+          Prev
+        </button>
+      )}
       {calcPages.length > 2 &&
         calcPages.map((page) => (
           <button
             key={page}
             onClick={() => onClickPage(page)}
-            className={currentPage === page ? '-active' : ''}
+            className={classNames(
+              'button',
+              currentPage === page ? '-active' : '',
+            )}
           >
             {page}
           </button>
         ))}
-      {pageInfo.hasNextPage && <button onClick={goNext}>Next</button>}
+      {pageInfo.hasNextPage && (
+        <button className='button -next' onClick={goNext}>
+          Next
+        </button>
+      )}
     </div>
   )
 }
 
-export default Container
+export const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+export default Presenter

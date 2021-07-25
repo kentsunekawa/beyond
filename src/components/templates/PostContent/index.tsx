@@ -1,49 +1,51 @@
 import ReactMarkdown from 'react-markdown'
+import styled from 'styled-components'
+import classNames from 'classnames'
 import gfm from 'remark-gfm'
-
+import 'github-markdown-css'
+import * as styles from './style'
 import { Post } from 'types'
 import PostLinkList from 'components/organisms/PostLinkList'
+import PostTitle from 'components/atoms/PostTitle'
 
 export type Props = {
   post: Post
+  className?: string
 }
 
-const Container: React.VFC<Props> = ({ post }) => {
-  return (
-    <article>
-      <div>
-        <h1>{post.title}</h1>
-        <div>
-          <div>
-            <div>
-              Published at :{' '}
-              {post.date
-                ? post.date.split('T')[0]
-                : post.createdAt.split('T')[0]}
-            </div>
-            <div>Updated at : {post.updatedAt.split('T')[0]}</div>
-          </div>
-          <div>
-            {post.tags.map((tag) => (
-              <div key={tag}>{tag}</div>
-            ))}
-          </div>
+const Structure: React.VFC<Props> = ({ post, className }) => (
+  <article className={classNames(className)}>
+    <div className='header'>
+      <PostTitle className='mainTitle'>{post.title}</PostTitle>
+      <div className='dateArea'>
+        <div className='date -published'>
+          Published at :{' '}
+          {post.date ? post.date.split('T')[0] : post.createdAt.split('T')[0]}
         </div>
-        <p>{post.seo ? post.seo.description : ''}</p>
-      </div>
-      <div>
-        {post.content && (
-          <ReactMarkdown plugins={[gfm]}>{post.content}</ReactMarkdown>
-        )}
-      </div>
-      <div>
-        <p>Relation Posts</p>
-        <div>
-          {post.relationPosts && <PostLinkList posts={post.relationPosts} />}
+        <div className='date -updatedat'>
+          Updated at : {post.updatedAt.split('T')[0]}
         </div>
       </div>
-    </article>
-  )
-}
+      <div className='tags'>
+        {post.tags.map((tag) => (
+          <div key={tag}>{tag}</div>
+        ))}
+      </div>
+      <p className='insert'>{post.seo ? post.seo.description : ''}</p>
+    </div>
+    {post.content && (
+      <ReactMarkdown className='markdown-body' plugins={[gfm]}>
+        {post.content}
+      </ReactMarkdown>
+    )}
+    {post.relationPosts.length > 0 && (
+      <PostLinkList listTitle='Related Posts' posts={post.relationPosts} />
+    )}
+  </article>
+)
 
-export default Container
+const Presenter = styled(Structure)`
+  ${styles.base}
+`
+
+export default Presenter
