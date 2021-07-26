@@ -8,6 +8,7 @@ export const base = css`
       display: block;
       font-size: 14px;
       font-weight: bold;
+      text-align: right;
     }
   }
   & > .list {

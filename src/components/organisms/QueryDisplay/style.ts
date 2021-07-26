@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 
 export const base = css`
   padding: 0 24px;
@@ -43,5 +44,8 @@ export const base = css`
         }
       }
     }
+  }
+  @media ${mq.tbMin_gt} {
+    padding: 0;
   }
 `

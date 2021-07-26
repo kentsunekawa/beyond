@@ -47,7 +47,6 @@ const Structure: React.VFC<Props> = ({
     </SolidButton>
     {isOpen && (
       <TagSelectorPanel
-        className='panel'
         tags={tags}
         selectedTags={selectedTags}
         closePanel={close}
@@ -66,6 +65,8 @@ const Container: React.FC<ComponentProps> = (componentProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const click = () => {
+    console.log('click')
+
     setIsOpen(!isOpen)
   }
 

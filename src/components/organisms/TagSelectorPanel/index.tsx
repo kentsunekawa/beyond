@@ -38,30 +38,33 @@ export const Structure: React.VFC<Props> = ({
       selectedTags.length > 0 ? '-selected' : '',
     )}
   >
-    <IconButton onClick={close} iconName='close' className='closeButton' />
-    <p className='title'>Tags</p>
-    <div className='tagList'>
-      {tags.map((tag, i) => {
-        return (
-          <div key={i} className='tagItem'>
-            <CheckButton
-              isSelected={isSelected(tag)}
-              onSelect={(isSelected) => toggleTagSelect(isSelected, tag)}
-            >
-              {tag}
-            </CheckButton>
-          </div>
-        )
-      })}
-    </div>
-    {selectedTags.length > 0 && (
-      <div className='clearButton'>
-        <TextButton onClick={clear}>All clear</TextButton>
+    <button className='overlay' onClick={close}></button>
+    <div className='panel'>
+      <IconButton onClick={close} iconName='close' className='closeButton' />
+      <p className='title'>Tags</p>
+      <div className='tagList'>
+        {tags.map((tag, i) => {
+          return (
+            <div key={i} className='tagItem'>
+              <CheckButton
+                isSelected={isSelected(tag)}
+                onSelect={(isSelected) => toggleTagSelect(isSelected, tag)}
+              >
+                {tag}
+              </CheckButton>
+            </div>
+          )
+        })}
       </div>
-    )}
-    <SolidButton onClick={close} className={classNames('okButton')}>
-      OK
-    </SolidButton>
+      {selectedTags.length > 0 && (
+        <div className='clearButton'>
+          <TextButton onClick={clear}>All clear</TextButton>
+        </div>
+      )}
+      <SolidButton onClick={close} className={classNames('okButton')}>
+        OK
+      </SolidButton>
+    </div>
   </div>
 )
 

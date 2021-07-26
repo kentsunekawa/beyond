@@ -11,11 +11,11 @@ export const base = css`
     margin-bottom: 8px;
   }
   & > .tagSelectorButton {
-    width: 30%;
+    width: 50%;
     margin-right: 8px;
   }
   & > .SearchButton {
-    width: calc(70% - 8px);
+    width: calc(50% - 8px);
     font-size: 30px;
   }
 
@@ -23,7 +23,7 @@ export const base = css`
     padding: 40px 0;
     justify-content: space-between;
     & > .keyword {
-      width: calc(100% - 172px);
+      width: calc(100% - 212px);
       margin-bottom: 0;
     }
     & > .tagSelectorButton {
@@ -31,7 +31,7 @@ export const base = css`
       margin-right: 0;
     }
     & > .SearchButton {
-      width: 40px;
+      width: 80px;
     }
   }
 `
