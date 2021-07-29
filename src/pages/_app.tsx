@@ -6,6 +6,7 @@ import { client } from 'client'
 import { theme } from 'styles/theme'
 import { modeVar } from 'cache'
 import GlobalStyle from 'components/GlobalStyle'
+import Window from 'components/Window'
 
 const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const mode = useReactiveVar<Mode>(modeVar)
@@ -14,7 +15,9 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme[mode]}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Window>
+          <Component {...pageProps} />
+        </Window>
       </ThemeProvider>
     </ApolloProvider>
   )

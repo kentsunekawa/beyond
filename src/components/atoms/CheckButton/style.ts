@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { linkHover } from 'styles/mixins'
 
 export const base = css`
   display: block;
@@ -18,4 +19,5 @@ export const base = css`
   input {
     display: none;
   }
+  ${linkHover()}
 `

@@ -1,7 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
+import classNames from 'classnames'
 import * as styles from './style'
+
+const COMPONENT_NAME = 'TextLink'
 
 interface ComponentProps {
   href: string
@@ -11,13 +14,15 @@ interface ComponentProps {
 
 type Props = ComponentProps
 
-const Structure: React.VFC<Props> = ({ href, className, children }) => (
+const TextLink: React.VFC<Props> = ({ href, className, children }) => (
   <Link href={href}>
-    <button className={className}>{children}</button>
+    <button className={classNames(className, COMPONENT_NAME)}>
+      {children}
+    </button>
   </Link>
 )
 
-const Presenter = styled(Structure)`
+const Presenter = styled(TextLink)`
   ${styles.base}
 `
 

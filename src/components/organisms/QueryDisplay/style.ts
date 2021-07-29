@@ -21,28 +21,6 @@ export const base = css`
       font-weight: bold;
       word-break: break-all;
       width: calc(100% - 80px);
-      & > .tag {
-        position: relative;
-        display: inline-block;
-        padding-right: 0.5em;
-        margin-right: 0.5em;
-        margin-bottom: 4px;
-        &:after {
-          content: '/';
-          display: block;
-          position: absolute;
-          right: 0;
-          top: 0;
-          transform: translateX(50%);
-        }
-        &:last-child {
-          padding-right: 0;
-          margin-right: 0;
-          &:after {
-            content: none;
-          }
-        }
-      }
     }
   }
   @media ${mq.tbMin_gt} {

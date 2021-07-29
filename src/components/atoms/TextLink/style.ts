@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 import { linkHover } from 'styles/mixins'
 
 export const base = css`
@@ -8,4 +9,8 @@ export const base = css`
   letter-spacing: 0.05em;
   color: #707070;
   ${linkHover()}
+
+  @media ${mq.tbMin_gt} {
+    font-size: 14px;
+  }
 `

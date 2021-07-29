@@ -1,9 +1,12 @@
 import { useReactiveVar } from '@apollo/client'
 import styled from 'styled-components'
+import classNames from 'classnames'
 import * as styles from './style'
 import { modeVar } from 'cache'
 import { Mode } from 'types'
 import GoogleMaterialIcons from 'components/atoms/icons/GoogleMaterialIcons'
+
+const COMPONENT_NAME = 'ModeChanger'
 
 interface ComponentProps {
   className?: string
@@ -14,14 +17,14 @@ interface Props extends ComponentProps {
   modeChange: () => void
 }
 
-const Structure: React.VFC<Props> = ({ mode, modeChange, className }) => (
-  <label className={`${className} -${mode}`}>
+const ModeChanger: React.VFC<Props> = ({ mode, modeChange, className }) => (
+  <label className={classNames(className, COMPONENT_NAME, `-${mode}`)}>
     <GoogleMaterialIcons iconName='lightbulb' />
     <input type='checkbox' checked={mode === 'dark'} onChange={modeChange} />
   </label>
 )
 
-const Presenter = styled(Structure)`
+const Presenter = styled(ModeChanger)`
   ${styles.base}
 `
 

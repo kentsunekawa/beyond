@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 
 export const base = css`
   display: flex;
@@ -6,9 +7,25 @@ export const base = css`
   align-items: center;
   align-content: center;
 
-  & > nav {
-    & > ul {
+  & > .nav {
+    & > .navLint {
       display: flex;
+      .TextLink {
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media ${mq.tbMin_gt} {
+    & > .nav {
+      & > .navLint {
+        & > .navItem {
+          margin: 0 8px;
+        }
+        .TextLink {
+          font-size: 14px;
+        }
+      }
     }
   }
 `

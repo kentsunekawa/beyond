@@ -21,12 +21,12 @@ const Structure: React.VFC<Props> = ({ className }) => (
             TOP
           </TextLink>
         </li>
-        <li>
+        <li className='navItem'>
           <TextLink className='navBtn' href={PATH.posts}>
             POSTS
           </TextLink>
         </li>
-        <li>
+        <li className='navItem'>
           <TextLink className='navBtn' href={PATH.about}>
             ABOUT
           </TextLink>

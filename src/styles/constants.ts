@@ -2,8 +2,8 @@ export const BREAK_POINTS = {
   spMin: 320,
   sp: 375,
   spLarge: 520,
-  spMax: 768,
-  tbMin: 769,
+  spMax: 767,
+  tbMin: 768,
   tbMax: 959,
   pcMin: 960,
   pc: 1200,
@@ -19,11 +19,11 @@ export const mq = {
   spLarge_lt: `(max-width: ${BREAK_POINTS.spLarge}px)`,
   // 520 ~
   spLarge_gt: `(min-width: ${BREAK_POINTS.spLarge}px)`,
-  // 520 ~ 768
+  // 520 ~ 767
   spLarge_gt_spMax_lt: `(min-width: ${BREAK_POINTS.spLarge}px) and (max-width: ${BREAK_POINTS.spMax}px)`,
-  // ~ 768
+  // ~ 767
   spMax_lt: `(max-width: ${BREAK_POINTS.spMax}px)`,
-  // 769 ~
+  // 768 ~
   tbMin_gt: `(min-width: ${BREAK_POINTS.tbMin}px)`,
   // ~ 959
   tbMax_lt: `(max-width: ${BREAK_POINTS.tbMax}px)`,

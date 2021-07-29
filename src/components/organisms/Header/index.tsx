@@ -1,9 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
+import classNames from 'classnames'
 
 import * as styles from './style'
 import GlobalNav from 'components/organisms/GlobalNav'
+
+const COMPONENT_NAME = 'Header'
 
 interface ContainerProps {
   logo: boolean
@@ -12,9 +15,9 @@ interface ContainerProps {
 
 type Props = ContainerProps
 
-const Structure: React.VFC<Props> = ({ logo, className }) => {
+const Header: React.VFC<Props> = ({ logo, className }) => {
   return (
-    <header className={className}>
+    <header className={classNames(className, COMPONENT_NAME)}>
       <div className='inner'>
         {logo && (
           <h1 className='logo'>
@@ -27,7 +30,7 @@ const Structure: React.VFC<Props> = ({ logo, className }) => {
   )
 }
 
-const Presenter = styled(Structure)`
+const Presenter = styled(Header)`
   ${styles.base}
 `
 

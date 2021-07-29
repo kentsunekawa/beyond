@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 
 export const base = css`
   padding: 16px 24px;
@@ -6,7 +7,7 @@ export const base = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-bottom: 24px;
+    padding-bottom: 40px;
     border-bottom: 1px solid #ddd;
     & > .mainTitle {
       margin-bottom: 16px;
@@ -23,21 +24,50 @@ export const base = css`
         }
       }
     }
-    & > .tags {
+    & > .TagList {
       margin-top: 16px;
-      display: flex;
     }
 
     & > .insert {
       display: block;
       width: 100%;
       font-size: 16px;
-      margin: 16px 0;
+      padding-top: 16px;
     }
   }
   & > .markdown-body {
-    padding: 24px 0 72px;
+    padding: 24px 0 88px;
+    border-bottom: 1px solid #ddd;
   }
-  & > .relatedPosts {
+
+  @media ${mq.pcMin_gt} {
+    padding: 88px 0;
+    & > .header {
+      align-items: flex-start;
+      align-content: flex-start;
+      border-bottom: none;
+      padding-bottom: 104px;
+      & > .mainTitle {
+        margin-bottom: 20px;
+      }
+      & > .dateArea {
+        & > .date {
+          width: auto;
+          &.-updatedat {
+            margin-top: 0;
+            margin-left: 12px;
+          }
+        }
+      }
+      & > .TagList {
+        margin-top: 0;
+      }
+      & > .insert {
+        padding-top: 56px;
+      }
+    }
+    & > .markdown-body {
+      padding: 0 0 128px;
+    }
   }
 `

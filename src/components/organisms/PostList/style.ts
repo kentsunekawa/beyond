@@ -27,6 +27,9 @@ export const base = css`
   @media ${mq.tbMin_gt} {
     & > .infoArea {
       padding: 0;
+      & > .postNum {
+        font-size: 16px;
+      }
     }
   }
 `

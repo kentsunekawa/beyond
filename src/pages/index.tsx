@@ -38,13 +38,13 @@ const Page: React.VFC<Props> = ({
       <Base page={page}>
         <div className={className}>
           <div className='listHeader'>
-            <TextLink href='/posts'>{'More >'}</TextLink>
+            <TextLink href='/posts'>{'MORE >'}</TextLink>
           </div>
           <div className='listArea'>
             <PostList postList={postList} count={aggregate.count} />
           </div>
           <div className='listFooter'>
-            <TextLink href='/posts'>{'More >'}</TextLink>
+            <TextLink href='/posts'>{'MORE >'}</TextLink>
           </div>
         </div>
       </Base>

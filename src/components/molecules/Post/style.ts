@@ -20,31 +20,20 @@ export const base = css`
     font-weight: bold;
     margin: 8px 0 16px;
   }
-  & > .tagList {
-    display: flex;
-    & > .tag {
-      position: relative;
-      padding-right: 8px;
-      margin-right: 4px;
-      font-size: 12px;
-      &:last-child {
-        padding-right: 4px;
-        margin-right: 0;
-        &:after {
-          content: none;
-        }
-      }
-      &:after {
-        position: absolute;
-        right: 0;
-        top: 0;
-        content: '/';
-      }
-    }
+  & > .description {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 24px;
   }
-
-  ${linkHover()}
-  @media ${mq.tbMin_gt} {
+  ${linkHover()} @media ${mq.tbMin_gt} {
     padding: 40px 0;
+    & > .date {
+      font-size: 16px;
+    }
+    & > .title {
+      font-size: 34px;
+      margin: 12px 0 24px;
+    }
   }
 `

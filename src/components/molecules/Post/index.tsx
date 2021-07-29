@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import * as styles from './style'
 import { PATH } from 'utils/constants'
 import { PostOverview } from 'types'
+import TagList from 'components/molecules/TagList'
 
 export type Props = {
   post: PostOverview
@@ -14,15 +15,8 @@ const Structure: React.VFC<Props> = ({ post, className }) => (
     <article className={className}>
       <p className='date'>{post.createdAt.split('T')[0]}</p>
       <h3 className='title'>{post.title}</h3>
-      {post.seo && <p>{post.seo.description}</p>}
-      <div className='tagList'>
-        {post.tags &&
-          post.tags.map((tag, i) => (
-            <span key={i} className='tag'>
-              {tag}
-            </span>
-          ))}
-      </div>
+      {/* {post.seo && <p className='description'>{post.seo.description}</p>} */}
+      <TagList tags={post.tags} />
     </article>
   </Link>
 )

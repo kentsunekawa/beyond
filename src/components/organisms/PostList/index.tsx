@@ -13,7 +13,7 @@ const Structure: React.FC<Props> = ({ postList, count, className }) => {
   return (
     <div className={className}>
       <div className='infoArea'>
-        <p className='postNum'>all {count}</p>
+        <p className='postNum'>All {count} posts</p>
       </div>
       <ul className='list'>
         {postList.length === 0 && (

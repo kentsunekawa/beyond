@@ -6,15 +6,18 @@ import 'github-markdown-css'
 import * as styles from './style'
 import { Post } from 'types'
 import PostLinkList from 'components/organisms/PostLinkList'
+import TagList from 'components/molecules/TagList'
 import PostTitle from 'components/atoms/PostTitle'
+
+const COMPONENT_NAME = 'PostContent'
 
 export type Props = {
   post: Post
   className?: string
 }
 
-const Structure: React.VFC<Props> = ({ post, className }) => (
-  <article className={classNames(className)}>
+const PostContent: React.VFC<Props> = ({ post, className }) => (
+  <article className={classNames(className, COMPONENT_NAME)}>
     <div className='header'>
       <PostTitle className='mainTitle'>{post.title}</PostTitle>
       <div className='dateArea'>
@@ -26,11 +29,7 @@ const Structure: React.VFC<Props> = ({ post, className }) => (
           Updated at : {post.updatedAt.split('T')[0]}
         </div>
       </div>
-      <div className='tags'>
-        {post.tags.map((tag) => (
-          <div key={tag}>{tag}</div>
-        ))}
-      </div>
+      <TagList tags={post.tags} />
       <p className='insert'>{post.seo ? post.seo.description : ''}</p>
     </div>
     {post.content && (
@@ -44,7 +43,7 @@ const Structure: React.VFC<Props> = ({ post, className }) => (
   </article>
 )
 
-const Presenter = styled(Structure)`
+const Presenter = styled(PostContent)`
   ${styles.base}
 `
 

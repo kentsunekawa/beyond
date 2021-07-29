@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import { linkHover } from 'styles/mixins'
 
 export const base = css`
   position: fixed;
@@ -15,7 +16,6 @@ export const base = css`
     align-content: center;
     width: 100%;
     height: 100%;
-    max-width: 1000px;
     margin: 0 auto;
     padding-right: 20px;
     & > .logo {
@@ -23,6 +23,7 @@ export const base = css`
       left: 16px;
       top: 50%;
       transform: translateY(-50%);
+      ${linkHover()}
       a {
         font-size: 24px;
         font-weight: 700;

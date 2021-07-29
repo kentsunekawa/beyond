@@ -1,4 +1,6 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
+import { linkHover } from 'styles/mixins'
 
 export const base = css`
   display: flex;
@@ -8,5 +10,12 @@ export const base = css`
   align-content: center;
   input {
     display: none;
+  }
+  &.-dark {
+    color: #fff;
+  }
+  ${linkHover()}
+  @media ${mq.tbMin_gt} {
+    font-size: 28px;
   }
 `

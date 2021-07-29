@@ -1,11 +1,12 @@
 import { css } from 'styled-components'
+import { mq } from 'styles/constants'
 
 export const base = css`
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
-  padding: 24px;
+  padding: 32px 24px;
   & > .button {
     display: flex;
     justify-content: center;
@@ -24,5 +25,9 @@ export const base = css`
     &.-prev {
       font-size: 12px;
     }
+  }
+
+  @media ${mq.tbMin_gt} {
+    padding: 72px 0 40px;
   }
 `
