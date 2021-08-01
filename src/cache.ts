@@ -4,7 +4,7 @@ import { POSTS_NUM_PER_PAGE } from 'utils/constants'
 
 export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   keyword: '',
-  orderBy: 'createdAt_ASC',
+  orderBy: 'date_DESC',
   tags: [],
   skip: 0,
   page: 1,
@@ -12,6 +12,7 @@ export const searchPostQueryVar = makeVar<PostSearchQueryType>({
   last: null,
   before: null,
   after: null,
+  stage: 'PUBLISHED',
 })
 
 export const modeVar = makeVar<Mode>('light')

@@ -63,6 +63,7 @@ export const getStaticProps: GetStaticProps = async () => {
     query: POSTS_QUERY,
     variables: {
       first: POSTS_NUM_PER_PAGE,
+      stage: process.env.NEXT_PUBLIC_POST_STAGE,
     },
   })
   return {

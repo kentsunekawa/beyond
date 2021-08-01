@@ -13,7 +13,7 @@ export type Props = {
 const Structure: React.VFC<Props> = ({ post, className }) => (
   <Link href={`${PATH.post(post.slug)}`}>
     <article className={className}>
-      <p className='date'>{post.createdAt.split('T')[0]}</p>
+      <p className='date'>{post.date.split('T')[0]}</p>
       <h3 className='title'>{post.title}</h3>
       {/* {post.seo && <p className='description'>{post.seo.description}</p>} */}
       <TagList tags={post.tags} />

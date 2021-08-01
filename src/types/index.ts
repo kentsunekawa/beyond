@@ -21,6 +21,7 @@ export type PostMin = {
 export type PostOverview = {
   createdAt: string
   updatedAt: string
+  date: string
   slug: string
   title: string
   tags: string[]
@@ -55,7 +56,9 @@ export type PostList = PostOverview[]
 
 export type Posts = Post[]
 
-export type PostOrderByInput = 'createdAt_ASC' | 'createdAt_DESC'
+export type PostOrderByInput = 'date_ASC' | 'date_DESC'
+
+export type PostStage = 'PUBLISHED' | 'DRAFT'
 
 export type PostSearchQuery = {
   keyword: string
@@ -67,6 +70,7 @@ export type PostSearchQuery = {
   last: number | null
   after: string | null
   before: string | null
+  stage: PostStage
 }
 
 export type Page = {

@@ -17,11 +17,13 @@ const Post: React.VFC<Props> = ({ post }) => {
 
   return (
     <>
-      <Head
-        title={post.seo ? post.seo.title : ''}
-        description={post.seo ? post.seo.description : ''}
-        image={post.seo ? post.seo.image.url : ''}
-      />
+      {post.seo && (
+        <Head
+          title={post.seo.title ? post.seo.title : ''}
+          description={post.seo.description ? post.seo.description : ''}
+          image={post.seo.image ? post.seo.image.url : ''}
+        />
+      )}
       <Base page={page}>
         <PostContent post={post} />
       </Base>

@@ -22,6 +22,7 @@ export const POST_CORE_FIELDS = gql`
   fragment PostCoreFields on Post {
     createdAt
     updatedAt
+    date
     slug
     title
     tags
@@ -59,8 +60,8 @@ export const COMMON_POSTS_FIELDS = gql`
 
 export const POSTS_QUERY = gql`
   ${COMMON_POSTS_FIELDS}
-  query Posts($first: Int) {
-    postsConnection(first: $first) {
+  query Posts($first: Int, $stage: Stage!) {
+    postsConnection(first: $first, stage: $stage, orderBy: date_DESC) {
       ...CommonPostFields
     }
   }
@@ -76,9 +77,10 @@ export const FILTERD_POSTS_QUERY = gql`
     $orderBy: PostOrderByInput
     $after: String
     $before: String
+    $stage: Stage!
   ) {
     postsConnection(
-      stage: PUBLISHED
+      stage: $stage
       first: $first
       last: $last
       skip: $skip
@@ -103,9 +105,10 @@ export const FILTERD_POSTS_QUERY_WITH_TAGS = gql`
     $tags: [String!]
     $after: String
     $before: String
+    $stage: Stage!
   ) {
     postsConnection(
-      stage: PUBLISHED
+      stage: $stage
       first: $first
       last: $last
       skip: $skip
