@@ -15,6 +15,8 @@ type Props = {
 const Post: React.VFC<Props> = ({ post }) => {
   const page = 'post'
 
+  console.log(post)
+
   if (!post) return null
 
   return (
@@ -47,7 +49,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return { params: { slug: post.slug } }
   })
 
-  console.log(paths)
   return {
     paths,
     fallback: false,
@@ -67,10 +68,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: POST_QUERY,
     variables: {
       slug: params.slug,
+      stage: process.env.NEXT_PUBLIC_POST_STAGE,
     },
   })
 
-  console.log(data.post)
   return {
     props: {
       post: data.post,

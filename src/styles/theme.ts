@@ -6,10 +6,16 @@ const base = {
 
 const light = {
   backgroundColor: '#fff',
+  colors: {
+    text: '#333',
+  },
 }
 
 const dark = {
   backgroundColor: '#333',
+  colors: {
+    text: '#ddd',
+  },
 }
 
 export const theme = {

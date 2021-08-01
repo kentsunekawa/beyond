@@ -2,16 +2,12 @@ import { css } from 'styled-components'
 import { mq } from 'styles/constants'
 
 export const base = css`
-  padding: 16px 24px;
+  padding: 32px 24px 16px;
   & > .header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-bottom: 40px;
-    border-bottom: 1px solid #ddd;
-    & > .mainTitle {
-      margin-bottom: 16px;
-    }
+    padding-bottom: 32px;
     & > .dateArea {
       display: flex;
       flex-wrap: wrap;
@@ -39,7 +35,6 @@ export const base = css`
   }
   & > .markdown-body {
     padding: 24px 0 88px;
-    border-bottom: 1px solid #ddd;
   }
 
   @media ${mq.pcMin_gt} {
@@ -47,10 +42,8 @@ export const base = css`
     & > .header {
       align-items: flex-start;
       align-content: flex-start;
-      border-bottom: none;
       padding-bottom: 104px;
       & > .mainTitle {
-        margin-bottom: 20px;
       }
       & > .dateArea {
         width: auto;

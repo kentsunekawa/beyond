@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { GetStaticProps } from 'next'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { mq } from 'styles/constants'
 import Head from 'components/templates/Head'
 import { POSTS_QUERY } from 'operations/queries'

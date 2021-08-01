@@ -5,10 +5,7 @@ import * as styles from './style'
 
 const COMPONENT_NAME = 'Window'
 
-type StyleTypes = 'hoge' | 'fuga'
-
 export type ComponentProps = {
-  styleTypes?: StyleTypes[]
   children?: React.ReactNode
   className?: string
 }
@@ -25,14 +22,6 @@ const Window: React.VFC<Props> = ({ domRefs, children, className }) => (
 
 const Presenter = styled(Window)`
   ${styles.base}
-  ${({ styleTypes }) =>
-    styleTypes && styleTypes.map((styleType) => styles[styleType])}
-  &.-scroll {
-    .Header {
-      background: rgba(255, 255, 255, 0.9);
-      transition: background-color 0.25s linear;
-    }
-  }
 `
 
 const Container: React.FC<ComponentProps> = (componentProps) => {

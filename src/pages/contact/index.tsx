@@ -1,15 +1,15 @@
 import Head from 'components/templates/Head'
 
 import Base from 'components/templates/Base'
-import PageTitle from 'components/atoms/PageTitle'
+import PageTitle from 'components/atoms/_PageTitle'
 
 const Contact: React.FC = () => {
   const page = 'contact'
   return (
     <>
-      <Head title="contact" description="contact" />
+      <Head title='contact' description='contact' />
       <Base page={page}>
-        <PageTitle title="Contact" />
+        <PageTitle title='Contact' />
         <p>coming soon</p>
       </Base>
     </>

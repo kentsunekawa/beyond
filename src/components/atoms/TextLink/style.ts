@@ -7,7 +7,6 @@ export const base = css`
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.05em;
-  color: #707070;
   ${linkHover()}
 
   @media ${mq.tbMin_gt} {

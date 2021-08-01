@@ -25,8 +25,6 @@ const Structure: React.VFC<Props> = ({ children, page, className }) => {
 
 const Presenter = styled(Structure)`
   ${styles.base}
-  /* background: #000; */
-  background: ${({ theme }) => theme.backgroundColor};
 `
 
 export default Presenter

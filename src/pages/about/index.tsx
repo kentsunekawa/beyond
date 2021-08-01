@@ -1,9 +1,7 @@
 import { GetStaticProps } from 'next'
-
 import Head from 'components/templates/Head'
-
 import Base from 'components/templates/Base'
-import PageTitle from 'components/atoms/PageTitle'
+import PageContent from 'components/templates/PageContent'
 import { client } from 'client'
 import { GET_PAGE_DATA } from 'operations/queries'
 
@@ -23,8 +21,7 @@ const About: React.VFC<Props> = ({ pageData }) => {
         image={pageData.seo.image.url}
       />
       <Base page={page}>
-        <PageTitle title={pageData.title} />
-        <div></div>
+        <PageContent page={pageData} />
       </Base>
     </>
   )

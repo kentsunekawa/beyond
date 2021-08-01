@@ -1,9 +1,20 @@
+import styled from 'styled-components'
+import classNames from 'classnames'
+import * as styles from './style'
+
+const COMPONENT_NAME = 'PageTitle'
+
 export type Props = {
-  title: string
+  children?: React.ReactNode
+  className?: string
 }
 
-const Container: React.FC<Props> = ({ title }) => {
-  return <h2>{title}</h2>
-}
+const PageTitle: React.VFC<Props> = ({ children, className }) => (
+  <h2 className={classNames(className, COMPONENT_NAME)}>{children}</h2>
+)
 
-export default Container
+const Presenter = styled(PageTitle)`
+  ${styles.base}
+`
+
+export default Presenter
