@@ -42,6 +42,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     return { params: { slug: post.slug } }
   })
 
+  console.log(paths)
   return {
     paths,
     fallback: false,
@@ -56,6 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   })
 
+  console.log(data.post)
   return {
     props: {
       post: data.post,
