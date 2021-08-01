@@ -9,11 +9,13 @@ import Base from 'components/templates/Base'
 import PostContent from 'components/templates/PostContent'
 
 type Props = {
-  post: PostType
+  post: PostType | null
 }
 
 const Post: React.VFC<Props> = ({ post }) => {
   const page = 'post'
+
+  if (!post) return null
 
   return (
     <>
@@ -36,6 +38,9 @@ export default Post
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await client.query({
     query: POSTS_SLUG_QUERY,
+    variables: {
+      stage: process.env.NEXT_PUBLIC_POST_STAGE,
+    },
   })
 
   const paths = data.posts.map((post: { slug: string }) => {
@@ -50,10 +55,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params) {
+    return {
+      props: {
+        post: null,
+      },
+    }
+  }
+
   const { data } = await client.query({
     query: POST_QUERY,
     variables: {
-      slug: params!.slug,
+      slug: params.slug,
     },
   })
 

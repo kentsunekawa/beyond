@@ -11,8 +11,8 @@ export const PAGE_INFO = gql`
 `
 
 export const POSTS_SLUG_QUERY = gql`
-  query {
-    posts(stage: DRAFT) {
+  query PostsSlug($stage: Stage!) {
+    posts(stage: $stage) {
       slug
     }
   }
