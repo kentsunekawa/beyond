@@ -40,8 +40,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   })
 
-  console.log(data.page.content.raw)
-
   return {
     props: {
       pageData: data.page,

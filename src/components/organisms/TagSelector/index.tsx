@@ -65,8 +65,6 @@ const Container: React.FC<ComponentProps> = (componentProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const click = () => {
-    console.log('click')
-
     setIsOpen(!isOpen)
   }
 
