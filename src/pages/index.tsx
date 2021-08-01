@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { GetStaticProps } from 'next'
-import styled from 'styled-components'
-import * as styles from './style'
+import styled, { css } from 'styled-components'
+import { mq } from 'styles/constants'
 import Head from 'components/templates/Head'
 import { POSTS_QUERY } from 'operations/queries'
 import { client } from 'client'
@@ -53,7 +53,27 @@ const Page: React.VFC<Props> = ({
 }
 
 const Index = styled(Page)`
-  ${styles.base}
+  .listHeader {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+
+  .listFooter {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+
+  @media ${mq.tbMin_gt} {
+    .listHeader {
+      padding: 40px 0;
+    }
+
+    .listFooter {
+      padding: 40px 0;
+    }
+  }
 `
 
 export default Index
