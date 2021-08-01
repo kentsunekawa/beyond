@@ -114,6 +114,7 @@ export default Posts
 export const getStaticProps: GetStaticProps = async () => {
   const { data } = await client.query({
     query: POSTS_QUERY,
+    variables: { stage: process.env.NEXT_PUBLIC_POST_STAGE },
   })
 
   let tags: string[] = []
