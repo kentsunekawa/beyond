@@ -1,5 +1,4 @@
 import { css } from 'styled-components'
-import { eng } from 'styles/mixins'
 
 export const base = css`
   position: relative;
@@ -17,6 +16,7 @@ export const base = css`
       text-align: center;
       font-size: 30px;
       font-weight: 700;
+      color: #333;
     }
     .catch {
       display: block;
@@ -24,6 +24,7 @@ export const base = css`
       font-size: 1.2rem;
       margin-top: 5px;
       font-weight: 600;
+      color: #333;
     }
   }
 `

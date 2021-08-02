@@ -21,8 +21,8 @@ export const base = css`
     width: calc(100vw - 32px);
     height: auto;
     max-height: 80vh;
-    background: #fff;
-    border: 2px solid #000;
+    background: ${({ theme }) => theme.backgroundColor};
+    border: 2px solid ${({ theme }) => theme.colors.text};
     padding: 32px;
     & > .title {
       display: block;

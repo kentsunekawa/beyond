@@ -12,6 +12,7 @@ export const base = css`
       display: flex;
       .TextLink {
         font-size: 12px;
+        color: #999;
       }
     }
   }

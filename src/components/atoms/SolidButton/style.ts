@@ -6,8 +6,8 @@ export const base = css`
   justify-content: center;
   align-items: center;
   align-content: center;
-  background: #333;
-  color: #fff;
+  background: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.backgroundColor};
   font-size: 14px;
   height: 40px;
   width: 100%;

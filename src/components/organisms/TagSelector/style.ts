@@ -7,7 +7,7 @@ export const base = css`
       position: absolute;
       top: 4px;
       right: 8px;
-      color: #fff;
+      color: ${({ theme }) => theme.backgroundColor};
       display: block;
     }
   }
