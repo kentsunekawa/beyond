@@ -1,7 +1,7 @@
 import Head from 'components/templates/Head'
 
 import Base from 'components/templates/Base'
-import PageTitle from 'components/atoms/_PageTitle'
+import PageTitle from 'components/atoms/PageTitle'
 
 const Gallery: React.FC = () => {
   const page = 'gallery'
@@ -9,7 +9,7 @@ const Gallery: React.FC = () => {
     <>
       <Head title='gallery' description='gallery' />
       <Base page={page}>
-        <PageTitle title='Gallery' />
+        <PageTitle className='mainTitle'>{page}</PageTitle>
         <p>coming soon</p>
       </Base>
     </>
