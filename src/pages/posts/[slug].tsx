@@ -15,8 +15,6 @@ type Props = {
 const Post: React.VFC<Props> = ({ post }) => {
   const page = 'post'
 
-  console.log(post)
-
   if (!post) return null
 
   return (

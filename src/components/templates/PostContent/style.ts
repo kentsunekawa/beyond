@@ -20,6 +20,9 @@ export const base = css`
         display: block;
         width: 100%;
         font-size: 12px;
+        span {
+          font-weight: bold;
+        }
         &.-updatedat {
           margin-top: 4px;
         }
@@ -56,9 +59,10 @@ export const base = css`
         width: auto;
         & > .date {
           width: auto;
+          font-size: 14px;
           &.-updatedat {
             margin-top: 0;
-            margin-left: 12px;
+            margin-left: 16px;
           }
         }
       }

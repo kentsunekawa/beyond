@@ -12,7 +12,7 @@ export const base = css`
     height: 100vh;
     background: rgba(0, 0, 0, 0.7);
   }
-  & > .panel {
+  & > .wrapper {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -21,38 +21,44 @@ export const base = css`
     width: calc(100vw - 32px);
     height: auto;
     max-height: 80vh;
-    background: ${({ theme }) => theme.backgroundColor};
-    border: 2px solid ${({ theme }) => theme.colors.text};
-    padding: 32px;
-    & > .title {
-      display: block;
-      width: 100%;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 24px;
-    }
-    & > .tagList {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-height: 300px;
-      overflow-x: scroll;
-      & > .tagItem {
-        margin-right: 4px;
-        margin-bottom: 4px;
+    & > .panel {
+      background: ${({ theme }) => theme.backgroundColor};
+      border: 2px solid ${({ theme }) => theme.colors.text};
+      padding: 32px;
+      & > .title {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 24px;
+      }
+      & > .tagList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-height: 300px;
+        overflow-x: scroll;
+        & > .tagItem {
+          margin-right: 4px;
+          margin-bottom: 4px;
+        }
       }
     }
   }
-
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+    margin-top: 16px;
+  }
   .clearButton {
-    padding-top: 8px;
-    text-align: center;
-    padding-bottom: 8px;
+    width: calc(50% - 4px);
   }
   .okButton {
-    margin-top: 16px;
-    width: 100%;
+    width: calc(50% - 4px);
+    margin-left: 8px;
   }
   .closeButton {
     position: absolute;
@@ -63,12 +69,13 @@ export const base = css`
     & > .overlay {
       display: none;
     }
-    & > .panel {
+    & > .wrapper {
       position: absolute;
       top: 100%;
       left: 0;
       transform: translate(0, -40px);
       width: 100%;
+      padding-top: 4px;
     }
     .okButton {
       width: 300px;

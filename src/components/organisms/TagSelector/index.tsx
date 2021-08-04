@@ -9,6 +9,7 @@ export type ComponentProps = {
   selectedTags: string[]
   toggleTagSelect: (isSelected: boolean, tag: string) => void
   clearTagList: () => void
+  deside: () => void
   className?: string
 }
 
@@ -30,6 +31,7 @@ const Structure: React.VFC<Props> = ({
   close,
   mouseEneter,
   mouseLeave,
+  deside,
   className,
 }) => (
   <div
@@ -52,6 +54,7 @@ const Structure: React.VFC<Props> = ({
         closePanel={close}
         toggleTagSelect={(isSelected, tag) => toggleTagSelect(isSelected, tag)}
         clearTagList={clearTagList}
+        deside={deside}
       />
     )}
   </div>

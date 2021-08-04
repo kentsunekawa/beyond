@@ -22,11 +22,12 @@ const PostContent: React.VFC<Props> = ({ post, className }) => (
       <PostTitle className='mainTitle'>{post.title}</PostTitle>
       <div className='dateArea'>
         <div className='date -published'>
-          Published at :{' '}
+          <span>Published at : </span>
           {post.date ? post.date.split('T')[0] : post.createdAt.split('T')[0]}
         </div>
         <div className='date -updatedat'>
-          Updated at : {post.updatedAt.split('T')[0]}
+          <span>Updated at : </span>
+          {post.updatedAt.split('T')[0]}
         </div>
       </div>
       <TagList tags={post.tags} />

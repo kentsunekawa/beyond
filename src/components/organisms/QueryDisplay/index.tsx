@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import * as styles from './style'
 import { PostSearchQuery } from 'types'
 import { searchPostQueryVar } from 'cache'
+import TagList from 'components/molecules/TagList'
 
 export type ComponentProps = {
   className?: string
@@ -25,11 +26,7 @@ export const Structure: React.VFC<Props> = ({ searchQuery, className }) => (
       <div className='row -tags'>
         <span className='label'>Tags:</span>
         <div className='value -tags'>
-          {searchQuery.tags.map((tag) => (
-            <span key={tag} className='tag'>
-              {tag}
-            </span>
-          ))}
+          <TagList tags={searchQuery.tags} styleTypes={['alignLeft']} />
         </div>
       </div>
     )}

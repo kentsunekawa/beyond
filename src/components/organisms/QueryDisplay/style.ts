@@ -21,6 +21,11 @@ export const base = css`
       font-weight: bold;
       word-break: break-all;
       width: calc(100% - 80px);
+      .TagList {
+        .tag {
+          font-size: 16px;
+        }
+      }
     }
   }
   @media ${mq.tbMin_gt} {

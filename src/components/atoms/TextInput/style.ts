@@ -10,5 +10,6 @@ export const base = css`
     height: 100%;
     padding: 11px;
     font-size: 16px;
+    color: #333;
   }
 `

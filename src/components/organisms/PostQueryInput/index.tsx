@@ -46,6 +46,7 @@ export const Structure: React.VFC<Props> = ({
       selectedTags={query.tags}
       toggleTagSelect={toggleTagSelect}
       clearTagList={clearTagList}
+      deside={search}
     />
     <SolidButton className='SearchButton' onClick={search}>
       <GoogleMaterialIcons iconName='search' />

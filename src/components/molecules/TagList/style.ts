@@ -28,10 +28,20 @@ export const base = css`
   }
 
   @media ${mq.tbMin_gt} {
-    text-align: right;
-
     & > .tag {
       font-size: 14px;
     }
   }
+`
+
+export const alignLeft = css`
+  text-align: left;
+`
+
+export const alignRight = css`
+  text-align: right;
+`
+
+export const alignCenter = css`
+  text-align: center;
 `

@@ -11,6 +11,7 @@ export const base = css`
   font-size: 14px;
   height: 40px;
   width: 100%;
+  border-radius: 3px;
   &.-disabled {
     opacity: 0.3;
   }
